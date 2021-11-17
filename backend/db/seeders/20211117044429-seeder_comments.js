@@ -6,21 +6,21 @@ module.exports = {
     {
       userId: 1,
       body: "sick post!",
-      storyId: 1,
+      postId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       userId: 2,
       body: "nice build!!",
-      storyId: 2,
+      postId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       userId: 3,
       body: "POGGERS!!!",
-      storyId: 3,
+      postId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
     },

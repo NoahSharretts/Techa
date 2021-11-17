@@ -5,25 +5,25 @@ module.exports = {
     await queryInterface.bulkInsert('Friends', [
       {
         userId: 1,
-        followerId: 2,
+        followingId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 1,
-        followerId: 3,
+        followingId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 2,
-        followerId: 3,
+        followingId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 3,
-        followerId: 1,
+        followingId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },

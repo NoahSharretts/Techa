@@ -5,25 +5,19 @@ module.exports = {
     await queryInterface.bulkInsert('Likes', [
       {
         userId: 1,
-        followerId: 2,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        userId: 1,
-        followerId: 3,
+        postId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 2,
-        followerId: 3,
+        postId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 3,
-        followerId: 1,
+        postId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
