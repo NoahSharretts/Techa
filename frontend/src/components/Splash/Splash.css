@@ -1,0 +1,10 @@
+body {
+  background-color: lightgray;
+}
+
+.splashBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
