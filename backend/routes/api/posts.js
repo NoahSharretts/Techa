@@ -27,20 +27,45 @@ const postValidators = [
 
 // GET: all post
 router.get('/', asyncHandler( async(req, res, next) => {
-  const post = await Post.findAll();
+  const post = await Post.findAll({
+    include: [
+      User,
+      Comment
+    ]
+  });
   return res.json(post)
 }))
 
+// GET: post by id
+router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
+  const postId = req.params.id
+  const post = await Post.findByPk(postId)
+  return res.json(post)
+}))
+
+// POST: create post 
+router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
+  const { body, photo, topic } = req.body;
+
+  const post = await Post.create({
+    userId: req.user.id,
+    topicId: 1,
+    photo: ''
+  })
+
+  res.json(post)
+}))
+
+// PUT: update post, only description!
 
 
+// DELETE: delete post
+router.delete('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
+  const postId = req.params.id;
+  const post = await Post.findByPk(postId);
 
-
-
-
-
-
-
-
-
+  await post.destroy();
+  return res.json(post);
+}))
 
 module.exports = router;
