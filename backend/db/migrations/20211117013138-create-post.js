@@ -13,11 +13,6 @@ module.exports = {
         references: { model:'Users' },
         allowNull: false
       },
-      topicId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model:'Topics' }
-      },
       body: {
         type: Sequelize.TEXT,
         allowNull: false
