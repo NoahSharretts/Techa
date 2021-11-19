@@ -49,8 +49,9 @@ router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
 
   const post = await Post.create({
     userId: req.user.id,
-    topicId: 1,
-    photo: ''
+    topicId: topic,
+    photo: photo,
+    body: body
   })
 
   res.json(post)
