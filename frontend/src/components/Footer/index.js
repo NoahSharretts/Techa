@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footerContainer">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css"></link>
       <p className="theDevs">Techa Repo: </p>
-      <a href="https://github.com/NoahSharretts/Techa">
+      <a href="">
         <i className="devicon-github-original" ></i>
       </a>
       <p className="pipe">|</p>
