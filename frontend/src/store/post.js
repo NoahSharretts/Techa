@@ -67,6 +67,23 @@ export const createPost = payload => async dispatch => {
   }
 }
 
+export const updatePost = payload => async dispatch => {
+  console.log(payload, 'payload')
+  const response = await csrfFetch(`/api/posts/${payload.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    const post = await response.json();
+    dispatch(update_one(post))
+    return post
+  }
+}
+
 export const deletePost = (postId) => async dispatch => {
 
   const response = await csrfFetch(`/api/posts/${postId}`, {
@@ -98,20 +115,19 @@ const postReducer = (state = intialState, action) => {
       newState[newPost.id] = newPost;
       return newState;
     }
-    // case LOAD_ONE: {
-    //   let newState = Object.assign({}, state);
-    //   action.payload.array.forEach(post => {
-    //     newState[post.id] = post
-    //   });
-    //   return newState;
-    // }
-    // case UPDATE_ONE: {
-    //   let newState = Object.assign({}, state);
-    //   action.payload.array.forEach(post => {
-    //     newState[post.id] = post
-    //   });
-    //   return newState;
-    // }
+    case LOAD_ONE: {
+      let newState = Object.assign({}, state);
+      action.payload.array.forEach(post => {
+        newState[post.id] = post
+      });
+      return newState;
+    }
+    case UPDATE_ONE: {
+      let newState = Object.assign({}, state);
+      let newPost = action.payload;
+      newState[newPost.id] = newPost;
+      return newState;
+    }
     // case DELETE_ONE: {
     //   let newState = Object.assign({}, state);
     //   action.payload.array.forEach(post => {

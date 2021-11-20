@@ -1,31 +1,34 @@
-import { useState, useEffect } from "react";
-import { useDispatch,  } from 'react-redux';
-// import { useHistory, } from 'react-router-dom'
-import { createPost, getPosts } from '../../store/post'
+import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
+import { updatePost, getPosts } from '../../store/post'
 
-function CreatePostForm({ setShowForm }) {
+function EditPostForm({ setShowForm, postId }) {
   const dispatch = useDispatch();
+  const histroy = useHistory();
+  const userId = useSelector((state) => state.session.user.id)
   const [body, setBody] = useState('');
   const [photo, setPhoto] = useState('');
-
-
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    let id = postId
     const payload ={
-      photo,
+      id,
+      userId,
       body,
+      photo,
     }
 
-    const post = dispatch(createPost(payload))
-    
+    const post = dispatch(updatePost(payload))
+
     if(post) {
-      setShowForm(false);
-      dispatch(getPosts());
+      setShowForm(false)
+      dispatch(getPosts())
     }
+    
   }
-
 
   const handleCancel = (e) => {
     e.preventDefault();
@@ -34,16 +37,15 @@ function CreatePostForm({ setShowForm }) {
 
   return (
     <div className='postFormContainer'>
-      <h2>Share your tech off!</h2>
+      <h2>Update your post!</h2>
       <form onSubmit={handleSubmit}>
         <div className='postForm'>
-            <label htmlFor='photoInput'>Your answer here</label>
+        {/* <label htmlFor='body'>Your answer here</label> */}
             <input 
               id='photoInput' 
               value={photo} 
               onChange={(e) => setPhoto(e.target.value)} 
             />
-            <label htmlFor='body'>Your description here</label>
             <textarea 
               id='body' 
               type='text' 
@@ -58,4 +60,4 @@ function CreatePostForm({ setShowForm }) {
   )
 }
 
-export default CreatePostForm;
+export default EditPostForm;

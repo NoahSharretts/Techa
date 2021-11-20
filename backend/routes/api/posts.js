@@ -39,17 +39,21 @@ router.get('/', asyncHandler( async(req, res, next) => {
 // GET: post by id
 router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
   const postId = req.params.id
-  const post = await Post.findByPk(postId)
+  const post = await Post.findByPk(postId, {
+    include: [
+      User,
+      Comment
+    ]
+  })
   return res.json(post)
 }))
 
 // POST: create post 
 router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
-  const { body, photo, topic } = req.body;
+  const { body, photo } = req.body;
 
   const post = await Post.create({
     userId: req.user.id,
-    topicId: topic,
     photo: photo,
     body: body
   })
@@ -58,7 +62,14 @@ router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
 }))
 
 // PUT: update post, only description!
+router.put('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
+  const {id} = req.body
+  const post = await Post.findByPk(id)
+  console.log(req.body, '================================')
+  post.update(req.body)
 
+  return res.json(post)
+}))
 
 // DELETE: delete post
 router.delete('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {

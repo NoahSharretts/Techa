@@ -2,7 +2,7 @@ import './Feed.css'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPosts } from '../../store/post'
-
+import EditPostModal from '../EditPostModal'
 
 function Feed() {
   const dispatch = useDispatch();
@@ -13,17 +13,27 @@ function Feed() {
     dispatch(getPosts());
   }, [dispatch])
 
+  const handleDelete = (e) => {
+
+  }
   
   return (
     <div className='feedContainer'>
       {Object.values(posts).map((post) => (
         <div className='postContainer' key={post.id}>
           <div className='avatarDiv'>
-            <img id='avatarImg' src={ post.User.avatar} />
-            <div id='username'>{ post.User.username }</div>
+            <img id='avatarImg' src={ post?.User?.avatar} />
+            <div id='username'>{ post?.User?.username }</div>
           </div>
           <div className='imgContainer'>
             <img src={post.photo}></img>
+          </div>
+          <div>
+            {(post.userId === user.id)? 
+              <div>
+                <EditPostModal postId={post.id}/>
+              </div> : null
+            }
           </div>
           <div>
            {post.body}
