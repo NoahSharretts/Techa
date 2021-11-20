@@ -1,7 +1,7 @@
 import './Feed.css'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { getPosts } from '../../store/post'
+import { getPosts, deletePost } from '../../store/post'
 import EditPostModal from '../EditPostModal'
 
 function Feed() {
@@ -14,7 +14,7 @@ function Feed() {
   }, [dispatch])
 
   const handleDelete = (e) => {
-
+    dispatch(deletePost(e.target.value))
   }
   
   return (
@@ -32,6 +32,7 @@ function Feed() {
             {(post.userId === user.id)? 
               <div>
                 <EditPostModal postId={post.id}/>
+                <button onClick={handleDelete} value={post.id}>Delete</button>
               </div> : null
             }
           </div>

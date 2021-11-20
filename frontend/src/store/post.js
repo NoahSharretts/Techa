@@ -128,13 +128,11 @@ const postReducer = (state = intialState, action) => {
       newState[newPost.id] = newPost;
       return newState;
     }
-    // case DELETE_ONE: {
-    //   let newState = Object.assign({}, state);
-    //   action.payload.array.forEach(post => {
-    //     newState[post.id] = post
-    //   });
-    //   return newState;
-    // }
+    case DELETE_ONE: {
+      let newState = {...state};
+      delete newState[action.payload.id];
+      return newState
+    }
     default:
       return state;
   }
