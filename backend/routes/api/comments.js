@@ -10,16 +10,16 @@ const { singleMulterUpload } = require("../../awsS3");
 const router = express.Router();
 
 // Does requireAuth replace this?
-// const checkPermissions = (post, currentUser) => {
-//   if (post.userId !== currentUser.id) {
-//     const err = new Error('Illegal operation.');
-//     err.status = 403;
-//     throw err;
-//   }
-// };
+const checkPermissions = (post, currentUser) => {
+  if (post.userId !== currentUser.id) {
+    const err = new Error('Illegal operation.');
+    err.status = 403;
+    throw err;
+  }
+};
 
 
-const postValidators = [
+const commentValidators = [
   check('body')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for userInput')
@@ -27,61 +27,53 @@ const postValidators = [
 ];
 
 
-// GET: all post
+// GET: all comments
 router.get('/', asyncHandler( async(req, res, next) => {
-  const post = await Post.findAll({
+  const comments = await Comment.findAll({
     include: [
       User,
-      Comment
     ]
   });
-  return res.json(post)
+  return res.json(comments)
 }))
 
-// GET: post by id
+// GET: comment by id
 router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
-  const postId = req.params.id
-  const post = await Post.findByPk(postId, {
+  const commentId = req.params.id
+  const comment = await Comment.findByPk(commentId, {
     include: [
       User,
-      Comment
     ]
   })
-  return res.json(post)
+  return res.json(comment)
 }))
 
-// POST: create post 
-router.post('/', singleMulterUpload('image'), requireAuth, asyncHandler( async(req, res, next) => {
-  const { body, photo } = req.body;
+// POST: create comment 
+router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
+
   
-  const post = await Post.create({
-    userId: req.user.id,
-    photo: photo,
-    body: body
-  })
+  const comment = await Comment.create(req.body)
 
-  res.json(post)
+  res.json(comment)
 }))
 
-// PUT: update post, only description!
+// PUT: update comment, only description!
 router.put('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
   const {id} = req.body
-  const post = await Post.findByPk(id)
+  const comment = await Comment.findByPk(id)
   console.log(req.body, '================================')
-  
+  comment.update(req.body)
 
-  post.update(req.body)
-
-  return res.json(post)
+  return res.json(comment)
 }))
 
-// DELETE: delete post
+// DELETE: delete comment
 router.delete('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
-  const postId = req.params.id;
-  const post = await Post.findByPk(postId);
+  const commentId = req.params.id;
+  const comment = await Comment.findByPk(commentId);
 
-  await post.destroy();
-  return res.json(post);
+  await comment.destroy();
+  return res.json(comment);
 }))
 
 module.exports = router;

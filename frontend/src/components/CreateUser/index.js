@@ -44,7 +44,7 @@ const CreateUser = () => {
 
   return (
     <div>
-      <h1>AWS S3 Express-React Demo</h1>
+      <h1>Get Started!</h1>
       {errors.length > 0 &&
         errors.map((error) => <div key={error}>{error}</div>)}
       <form
