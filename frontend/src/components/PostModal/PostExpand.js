@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory, } from 'react-router-dom'
 import { deletePost } from '../../store/post';
-import { getComments, createComment } from '../../store/comment'
+import { getComments, createComment, deleteComment } from '../../store/comment'
 import EditPostModal from "../EditPostModal";
 
 function CreatePostForm({ setShowForm, post }) {
@@ -20,6 +20,10 @@ function CreatePostForm({ setShowForm, post }) {
     dispatch(deletePost(e.target.value))
   }
 
+  const handleCommentDelete = (e) => {
+    dispatch(deleteComment(e.target.value))
+  }
+   
   const handleComment = (e) => {
     e.preventDefault();
 
@@ -64,7 +68,13 @@ function CreatePostForm({ setShowForm, post }) {
             {Object.values(allComments).map(comment => 
               <div key={comment.id}>
                 { comment.postId === post.id ? 
-                <div className='comment' >{comment.body}</div> :null }
+                <div className='comment' >{comment.body}</div> : null 
+                }
+                <div>
+                  { comment.userId === user.id ?
+                    <button value={comment.id} onClick={handleCommentDelete}>Del</button> : null
+                  }
+                </div>
               </div>
             )}
           </div>
