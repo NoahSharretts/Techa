@@ -1,6 +1,7 @@
 import './Post.css'
 import { useEffect, useState } from 'react';
 import { Modal } from '../../context/Modal';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPosts, deletePost, getPostById } from '../../store/post'
 import EditPostModal from '../EditPostModal'
@@ -27,7 +28,9 @@ function Post({ post }) {
       <div className='postContainer' key={post.id}>
         <div className='avatarDiv'>
           <img id='avatarImg' src={ post?.User?.avatar} />
-          <div id='username'>{ post?.User?.username }</div>
+          <Link to={`/users/${post.userId}`}>
+            <div id='username'>{ post?.User?.username }</div>
+          </Link>
         </div>
         <div className='imgContainer'>
           <img src={post.photo}></img>
