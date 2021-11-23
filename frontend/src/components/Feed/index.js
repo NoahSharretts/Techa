@@ -1,4 +1,4 @@
-
+import './Post.css';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPosts, deletePost, getPostById } from '../../store/post'
