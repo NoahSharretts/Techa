@@ -3,6 +3,10 @@
   height: 450px;
 } */
 
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .feedContainer {
   display: flex;
   align-items: center;

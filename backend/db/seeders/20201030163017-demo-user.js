@@ -19,13 +19,44 @@ module.exports = {
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser1',
+        username: 'FakeUser3',
         avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser2',
+        username: 'FakeUser4',
+        avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'FakeUser5',
+        avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },{
+        email: faker.internet.email(),
+        username: 'FakeUser6',
+        avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },{
+        email: faker.internet.email(),
+        username: 'FakeUser7',
+        avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },{
+        email: faker.internet.email(),
+        username: 'FakeUser8',
+        avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },{
+        email: faker.internet.email(),
+        username: 'FakeUser9',
+        avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
+        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+      },{
+        email: faker.internet.email(),
+        username: 'FakeUser10',
         avatar: 'https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg',
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
       },
