@@ -27,13 +27,15 @@ function Post({ post }) {
     <div className='feedContainer'>
       <div className='postContainer' key={post.id}>
         <div className='avatarDiv'>
-          <img id='avatarImg' src={ post?.User?.avatar} />
+          <div className='avatarImg'>
+            <img id='avatarImg' src={ post?.User?.avatar} />
+          </div>
           <Link to={`/users/${post.userId}`}>
             <div id='username'>{ post?.User?.username }</div>
           </Link>
         </div>
         <div className='imgContainer'>
-          <img src={post.photo}></img>
+          <img id='postPhoto' src={post.photo}></img>
         </div>
         <div>
           {(post.userId === user.id)? 
@@ -42,12 +44,12 @@ function Post({ post }) {
               <button onClick={handleDelete} value={post.id}>Delete</button>
             </div> : null
           }
-          <div>
+          <div className='postDiv'>
             <PostModal post={post} />
           </div>
         </div>
-        <div>
-          {post.body}
+        <div className='descriptionBox'>
+          <span id='descUsername'>{ post?.User?.username }</span>{post.body}
         </div>
       </div>
     </div>

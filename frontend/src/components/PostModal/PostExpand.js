@@ -1,3 +1,4 @@
+import './postExpand.css';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory, } from 'react-router-dom'
@@ -42,25 +43,27 @@ function CreatePostForm({ setShowForm, post }) {
   }
  
   return (
-    <div className='feedContainer'>
-      <div className='postContainer'>
-        <div className='avatarDiv'>
-          <img id='avatarImg' src={ post?.User?.avatar} />
-          <div id='username'>{ post?.User?.username }</div>
-        </div>
-        <div className='imgContainer'>
-          <img src={post?.photo}></img>
-        </div>
-        <div>
-          {(post.userId === user.id)? 
-            <div>
-              <EditPostModal postId={post.id}/>
-              <button onClick={handleDelete} value={post.id}>Delete</button>
-            </div> : null
-          }
-        </div>
-        <div>
-          {post.body}
+    <div className='expandBox'>
+      <div className='feedContainer'>
+        <div className='postContainer'>
+          <div className='avatarDiv'>
+            <img id='avatarImg' src={ post?.User?.avatar} />
+            <div id='username'>{ post?.User?.username }</div>
+          </div>
+          <div className='imgContainer'>
+            <img id='postPhoto' src={post?.photo}></img>
+          </div>
+          <div>
+            {(post.userId === user.id)? 
+              <div>
+                <EditPostModal postId={post.id}/>
+                <button onClick={handleDelete} value={post.id}>Delete</button>
+              </div> : null
+            }
+          </div>
+          <div>
+            {post.body}
+          </div>
         </div>
       </div>
       <div className='commentsContainer'>
@@ -82,7 +85,7 @@ function CreatePostForm({ setShowForm, post }) {
             <input className='commentInput' onChange={(e) => setBody(e.target.value)}></input>
             <button onClick={handleComment}>Send</button>
           </div>
-      </div>
+        </div>
     </div>
   )
 }

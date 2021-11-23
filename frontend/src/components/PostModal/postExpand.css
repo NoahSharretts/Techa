@@ -1,0 +1,14 @@
+/* .postContainer {
+  display: flex;
+
+} */
+
+.expandBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentsContainer {
+  display: flex;
+  flex-direction: column-reverse;
+}
