@@ -72,12 +72,12 @@ function CreatePostForm({ setShowForm, post }) {
       <div className='commentsContainer'>
           <div className='commentsFeed'>
             {Object.values(allComments).map(comment => 
-              <div key={comment.id}>
+              <div className='commentBox' key={comment.id}>
                 { comment.postId === post.id && (
                   <div className='comment' >
                     <h3>{users[comment.userId]?.username}</h3>
-                    <span id='commentBody'>{comment.body}</span>
-                    <div>
+                    <p id='commentBody'>{comment.body}</p>
+                    <div className='deleteButton'>
                       { comment.userId === user.id ?
                         <button value={comment.id} onClick={handleCommentDelete}>Del</button> : null
                       }
