@@ -45,12 +45,14 @@
 
 #postPhoto {
   border: 1px solid black;
-  
+  width: 650px;
+
 }
 
 .descriptionBox{
   border: 1px solid black;
   background-color: whitesmoke;
+  width: 650px;
 
 }
 

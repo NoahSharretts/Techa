@@ -10,5 +10,18 @@
 
 .commentsContainer {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  width: 225px;
+}
+
+#commentBody {
+  width: 225px;
+  overflow: visible;
+  padding: 6px;
+  border: 1px solid black;
+}
+
+.commentInputContainer {
+  width: 225px;
+  bottom: 0;
 }
