@@ -64,18 +64,25 @@ function CreatePostForm({ setShowForm, post }) {
               </div> : null
             }
           </div>
-          <div>
-            {post.body}
-          </div>
         </div>
       </div>
       <div className='commentsContainer'>
+        <div className='avatarComment'>
+          <img id='avatarImgComment' src={ post?.User?.avatar} />
+          <div id='usernameComment'>{ post?.User?.username }</div>
+        </div>
+        <div className='postDescription'>
+        {post.body}
+        </div>
           <div className='commentsFeed'>
             {Object.values(allComments).map(comment => 
               <div className='commentBox' key={comment.id}>
                 { comment.postId === post.id && (
                   <div className='comment' >
-                    <h3>{users[comment.userId]?.username}</h3>
+                    <div id='avatarComment'>
+                      <img id='avatarImgComment' src={ users[comment.userId]?.avatar} />
+                      <h3>{users[comment.userId]?.username}</h3>
+                    </div>
                     <p id='commentBody'>{comment.body}</p>
                     <div className='deleteButton'>
                       { comment.userId === user.id ?
