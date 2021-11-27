@@ -53,17 +53,27 @@ export const getPostById = (postId) => async dispatch => {
 }
 
 export const createPost = payload => async dispatch => {
+  const { photo, body, userId } = payload;
+
+  const formData = new FormData();
+  formData.append('body', body);
+  formData.append('userId', userId);
+
+
+  if(photo) formData.append('photo', photo);
+
   const response = await csrfFetch(`/api/posts`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
-    body: JSON.stringify(payload),
+    body: formData,
   });
 
   if (response.ok) {
     const post = await response.json();
-    dispatch(add_one(post))
+    dispatch(add_one(post.post))
+    return post
   }
 }
 

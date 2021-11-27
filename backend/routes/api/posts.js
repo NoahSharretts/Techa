@@ -51,16 +51,21 @@ router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
 }))
 
 // POST: create post 
-router.post('/', singleMulterUpload('image'), requireAuth, asyncHandler( async(req, res, next) => {
-  const { body, photo } = req.body;
+router.post('/', singleMulterUpload("photo"), requireAuth, asyncHandler( async(req, res, next) => {
+  console.log('herehrehrherhehrehrherhere')
+  const { body, userId } = req.body;
+
+  const photo = await singlePublicFileUpload(req.file);
+
+
   
   const post = await Post.create({
-    userId: req.user.id,
-    photo: photo,
-    body: body
+    userId,
+    photo,
+    body
   })
 
-  res.json(post)
+  return res.json({post})
 }))
 
 // PUT: update post, only description!

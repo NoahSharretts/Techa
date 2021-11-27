@@ -9,6 +9,8 @@ function CreatePostForm({ setShowForm }) {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
 
+
+
   const handleCancel = (e) => {
     e.preventDefault();
     setShowForm(false);
@@ -18,7 +20,8 @@ function CreatePostForm({ setShowForm }) {
     initialValues: {
       body: "",
       photo: "",
-      ownerId: userId,
+      userId
+      
     },
     validationSchema: yup.object({
       body: yup.string().min(5).max(350).required('Description must be be between 5 and 350 characters'),
@@ -32,6 +35,8 @@ function CreatePostForm({ setShowForm }) {
     },
   });
 
+ 
+
   return (
     <div className='postFormContainer'>
       <h2>Share your tech off!</h2>
@@ -40,10 +45,14 @@ function CreatePostForm({ setShowForm }) {
           <div>
             <label htmlFor='photo'>Your photo</label>
             <input 
-              id='photo' 
+              id='photo'
+              type='file'
               name='photo'
-              value={formik.values.photo} 
-              onChange={formik.handleChange} 
+              // value={formik.values.photo}
+              onChange={(event) => {
+                formik.setFieldValue('photo', event.currentTarget.files[0]);
+              }
+              } 
               onBlur={formik.handleBlur}
             />
              {formik.touched.photo && formik.errors.photo ? (
