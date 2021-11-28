@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import Splash from './components/Splash';
 import Feed from './components/Feed';
 import Footer from './components/Footer';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user)
@@ -40,6 +41,9 @@ function App() {
             <CreateUser />
           </Route>
           <Route exact path='/feed'>
+          </Route>
+          <Route exact path='/users/:id'>
+            <ProfilePage />
           </Route>
         </Switch>
         <Footer />
