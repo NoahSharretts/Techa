@@ -6,16 +6,37 @@
 .expandBox {
   display: flex;
   flex-direction: row;
+  height: fit-content;
+  width: fit-content;
 }
 .commentsFeed{
-  height: 100%;
+  height: inherit;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 .commentsContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 225px;
-  height: 100%;
+  width: 325px;
+  max-height: 900px;
+  
+}
+
+.avatarComment{
+  display: flex;
+  align-items: center;
+}
+
+#avatarComment{
+  display: flex;
+  align-items: center;
+}
+
+.postDescription {
+  padding-left: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
 }
 
 #commentBody {
@@ -38,4 +59,14 @@
 .commentBox {
   height: fit-content;
   width: fit-content;
+}
+
+#avatarImgComment{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+#usernameComment{
+ font-weight: bolder;
 }

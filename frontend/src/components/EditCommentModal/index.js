@@ -1,26 +1,25 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react'
-import PostExpand from './PostExpand';
-import './PostExpand'
+import EditCommentForm from './EditCommentForm';
+import './EditCommentForm.css'
 
-function PostModal({ post }) {
+function EditCommentModal({comment}) {
   const [showForm, setShowForm] = useState(false)
   
 
   return (
     <div>
       <button 
-        id='openButton' 
-        onClick={() => setShowForm(true)} >Open
+        id='add-awnser' 
+        onClick={() => setShowForm(true)} >Edit
       </button>
-      
       {showForm && (
         <Modal onClose={() => setShowForm(false)}>
-          <PostExpand setShowForm={setShowForm} post={post}/>
+          <EditCommentForm setShowForm={setShowForm} comment={comment} />
         </Modal>
       )}
     </div>
   )
 }
 
-export default PostModal;
+export default EditCommentModal;

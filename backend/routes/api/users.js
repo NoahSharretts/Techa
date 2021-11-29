@@ -6,7 +6,7 @@ const { singlePublicFileUpload }  = require("../../awsS3");
 const { singleMulterUpload } = require("../../awsS3");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Post, Comment } = require("../../db/models");
 const router = express.Router();
 
 const validateSignup = [
@@ -59,5 +59,20 @@ router.post(
     });
   })
 );
+
+router.get('/:id(\\d+)',asyncHandler( async(req, res, next) => {
+ const userId = req.params.id;
+ const posts = await Post.findAll({
+   where: {
+     userId: userId
+  },
+  include: [
+    User,
+    Comment
+  ]
+ })
+ console.log(posts, '******************************')
+ return res.json(posts)
+}))
 
 module.exports = router;

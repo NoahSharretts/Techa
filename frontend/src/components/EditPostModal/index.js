@@ -3,7 +3,7 @@ import { useState } from 'react'
 import EditPostForm from './EditPostForm';
 import './EditPostForm.css'
 
-function EditPostModal({postId}) {
+function EditPostModal({post}) {
   const [showForm, setShowForm] = useState(false)
   
 
@@ -15,7 +15,7 @@ function EditPostModal({postId}) {
       </button>
       {showForm && (
         <Modal onClose={() => setShowForm(false)}>
-          <EditPostForm setShowForm={setShowForm} postId={postId} />
+          <EditPostForm setShowForm={setShowForm} post={post} />
         </Modal>
       )}
     </div>

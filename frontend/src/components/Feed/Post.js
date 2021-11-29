@@ -40,7 +40,7 @@ function Post({ post }) {
         <div>
           {(post.userId === user.id)? 
             <div>
-              <EditPostModal postId={post.id}/>
+              <EditPostModal post={post} />
               <button onClick={handleDelete} value={post.id}>Delete</button>
             </div> : null
           }

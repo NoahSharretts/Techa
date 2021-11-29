@@ -6,26 +6,42 @@ import { createComment, getComments } from '../../store/comment';
 
 function CreateCommentForm({ setShowForm }) {
   const dispatch = useDispatch();
-  const [body, setBody] = useState('');
+  // const [body, setBody] = useState('');
   const userId = useSelector((state) => state.session.user.id );
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    const payload ={
-      userId,
-      body,
-      // postId
-    }
+  //   const payload ={
+  //     userId,
+  //     body,
+  //     // postId
+  //   }
 
-    const post = dispatch(createPost(payload))
+  //   const post = dispatch(createPost(payload))
     
-    if(post) {
+  //   if(post) {
+  //     setShowForm(false);
+  //     dispatch(getPosts());
+  //   }
+  // }
+  const formik = useFormik({
+    initialValues: {
+      body: "",
+      userId
+      
+    },
+    validationSchema: yup.object({
+      body: yup.string().min(5).max(350).required('Comment must be be between 5 and 350 characters'),
+    }),
+    onSubmit: async (values) => {
+      dispatch(createComment(values)).then(() => 
+      dispatch(getPosts())
+      )
       setShowForm(false);
-      dispatch(getPosts());
-    }
-  }
+    },
+  });
 
 
   const handleCancel = (e) => {
@@ -36,7 +52,7 @@ function CreateCommentForm({ setShowForm }) {
   return (
     <div className='postFormContainer'>
       <h2>Post a comment!</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div className='postForm'>
           <label htmlFor='body'>Your description here</label>
           <textarea 
