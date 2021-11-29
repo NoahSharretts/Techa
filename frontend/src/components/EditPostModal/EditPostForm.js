@@ -2,31 +2,31 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { updatePost, getPosts } from '../../store/post'
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 function EditPostForm({ setShowForm, post }) {
   const dispatch = useDispatch();
   const histroy = useHistory();
   const userId = useSelector((state) => state.session.user.id)
-  const [body, setBody] = useState(post.body);
   
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let id = post.id
-    const payload ={
-      id,
-      userId,
-      body,
-    }
-
-    const postDispatch = dispatch(updatePost(payload))
-
-    if(postDispatch) {
-      setShowForm(false)
+  const formik = useFormik({
+    initialValues: {
+      id: post.id,
+      body: post.body,
+      userId
+      
+    },
+    validationSchema: yup.object({
+      body: yup.string().min(5).max(350).required('Comment must be be between 5 and 350 characters'),
+    }),
+    onSubmit: async (values) => {
+      dispatch(updatePost(values)).then(() => 
       dispatch(getPosts())
-    }
-    
-  }
+      )
+      setShowForm(false);
+    },
+  });
 
   const handleCancel = (e) => {
     e.preventDefault();
@@ -36,14 +36,22 @@ function EditPostForm({ setShowForm, post }) {
   return (
     <div className='postFormContainer'>
       <h2>You may only update the description on your posts!</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div className='postForm'>
+          <div>
+            <label htmlFor='body'>Your description here</label>
             <textarea 
               id='body' 
+              name='body'
               type='text' 
-              onChange={(e) => setBody(e.target.value)} 
-              value={body} 
+              onChange={formik.handleChange} 
+              value={formik.values.body} 
+              onBlur={formik.handleBlur}
             />
+             {formik.touched.body && formik.errors.body ? (
+              <div className="errorText">{formik.errors.body}</div>
+            ) : null}
+          </div>
             <button onClick={handleCancel} type='button'>Cancel</button>
             <button type="submit">Done</button>
         </div>

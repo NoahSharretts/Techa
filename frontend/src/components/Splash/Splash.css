@@ -1,5 +1,5 @@
 body {
-  background-color: lightgray;
+  background-image: URL(https://www.redpoints.com/wp-content/uploads/2019/01/consumer20electronics201.png);
 }
 
 .splashBox {
@@ -8,3 +8,4 @@ body {
   align-items: center;
   flex-direction: column;
 }
+

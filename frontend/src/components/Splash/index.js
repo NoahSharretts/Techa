@@ -11,8 +11,8 @@ function Splash() {
   return (
     <>
       <div className='splashBox'>
-        <h1>Techa</h1>
-        <h4>Are you ready?</h4>
+        <h1 id='techa'>Techa</h1>
+        <h4 id='bio'>A place to share off and experience new Tech!</h4>
         <div className='buttonDiv'>
           <LoginFormModal />
           <NavLink to="/signup" className='signup btn'>Sign-up</NavLink>
