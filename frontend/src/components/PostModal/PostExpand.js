@@ -7,6 +7,8 @@ import { deletePost } from '../../store/post';
 import { getComments, createComment, deleteComment } from '../../store/comment'
 import EditPostModal from "../EditPostModal";
 import EditCommentModal from '../EditCommentModal';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 function CreatePostForm({ setShowForm, post }) {
   const dispatch = useDispatch();
@@ -29,17 +31,21 @@ function CreatePostForm({ setShowForm, post }) {
     dispatch(deleteComment(e.target.value))
   }
    
-  const handleComment = (e) => {
-    e.preventDefault();
-
-    const comment = {
+  const formik = useFormik({
+    initialValues: {
+      body: "",
       userId: user.id,
-      body,
       postId: post.id
-    }
-
-    dispatch(createComment(comment))
-  }
+      
+    },
+    validationSchema: yup.object({
+      body: yup.string().min(5).max(350).required('Comment must be be between 5 and 350 characters'),
+    }),
+    onSubmit: async (values) => {
+      dispatch(createComment(values))
+      formik.values.body = "";
+    },
+  });
 
   const handleCancel = (e) => {
     e.preventDefault();
@@ -99,10 +105,24 @@ function CreatePostForm({ setShowForm, post }) {
               </div>
             )}
           </div>
-          <div className='commentInputContainer'>
-            <input className='commentInput' onChange={(e) => setBody(e.target.value)}></input>
-            <button onClick={handleComment}>Send</button>
-          </div>
+          <form onSubmit={formik.handleSubmit}>
+            <div className='postForm'>
+              <div>
+                <textarea 
+                  id='body' 
+                  name='body'
+                  type='text' 
+                  onChange={formik.handleChange} 
+                  value={formik.values.body} 
+                  onBlur={formik.handleBlur}
+                />
+                {formik.touched.body && formik.errors.body ? (
+                  <div className="errorText">{formik.errors.body}</div>
+                ) : null}
+              </div>
+                <button type="submit">Done</button>
+            </div>
+          </form>
         </div>
     </div>
   )
