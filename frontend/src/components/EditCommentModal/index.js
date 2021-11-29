@@ -1,9 +1,9 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react'
-import EditPostForm from './EditPostForm';
-import './EditPostForm.css'
+import EditCommentForm from './EditCommentForm';
+import './EditCommentForm.css'
 
-function EditPostModal({post}) {
+function EditCommentModal({comment}) {
   const [showForm, setShowForm] = useState(false)
   
 
@@ -11,15 +11,15 @@ function EditPostModal({post}) {
     <div>
       <button 
         id='add-awnser' 
-        onClick={() => setShowForm(true)} >Edit Post
+        onClick={() => setShowForm(true)} >Edit
       </button>
       {showForm && (
         <Modal onClose={() => setShowForm(false)}>
-          <EditPostForm setShowForm={setShowForm} post={post} />
+          <EditCommentForm setShowForm={setShowForm} comment={comment} />
         </Modal>
       )}
     </div>
   )
 }
 
-export default EditPostModal;
+export default EditCommentModal;

@@ -78,7 +78,7 @@ export const createPost = payload => async dispatch => {
 }
 
 export const updatePost = payload => async dispatch => {
-  console.log(payload, 'payload')
+  
   const response = await csrfFetch(`/api/posts/${payload.id}`, {
     method: 'PUT',
     headers: {

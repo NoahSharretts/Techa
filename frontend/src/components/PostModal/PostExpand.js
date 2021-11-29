@@ -6,6 +6,7 @@ import { allUsers } from "../../store/users";
 import { deletePost } from '../../store/post';
 import { getComments, createComment, deleteComment } from '../../store/comment'
 import EditPostModal from "../EditPostModal";
+import EditCommentModal from '../EditCommentModal';
 
 function CreatePostForm({ setShowForm, post }) {
   const dispatch = useDispatch();
@@ -85,8 +86,12 @@ function CreatePostForm({ setShowForm, post }) {
                     </div>
                     <p id='commentBody'>{comment.body}</p>
                     <div className='deleteButton'>
-                      { comment.userId === user.id ?
-                        <button value={comment.id} onClick={handleCommentDelete}>Del</button> : null
+                      { comment.userId === user.id && (
+                        <> 
+                          <EditCommentModal comment={comment} />
+                          <button value={comment.id} onClick={handleCommentDelete}>Del</button> 
+                        </> 
+                      )
                       }
                     </div>
                   </div>               

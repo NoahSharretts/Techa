@@ -72,7 +72,7 @@ router.post('/', singleMulterUpload("photo"), requireAuth, asyncHandler( async(r
 router.put('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
   const {id} = req.body
   const post = await Post.findByPk(id)
-  console.log(req.body, '================================')
+  // console.log(req.body, '================================')
   
 
   post.update(req.body)

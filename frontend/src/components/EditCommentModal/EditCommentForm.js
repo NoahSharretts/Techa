@@ -1,25 +1,26 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom'
-import { updatePost, getPosts } from '../../store/post'
+import { useHistory } from 'react-router-dom';
+import { updatePost, getPosts } from '../../store/post';
+import { updateComment } from '../../store/comment'
 
-function EditPostForm({ setShowForm, post }) {
+function EditCommentForm({ setShowForm, comment }) {
   const dispatch = useDispatch();
   const histroy = useHistory();
   const userId = useSelector((state) => state.session.user.id)
-  const [body, setBody] = useState(post.body);
+  const [body, setBody] = useState(comment.body);
   
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let id = post.id
+    let id = comment.id
     const payload ={
       id,
       userId,
       body,
     }
 
-    const postDispatch = dispatch(updatePost(payload))
+    const postDispatch = dispatch(updateComment(payload))
 
     if(postDispatch) {
       setShowForm(false)
@@ -52,4 +53,4 @@ function EditPostForm({ setShowForm, post }) {
   )
 }
 
-export default EditPostForm;
+export default EditCommentForm;
