@@ -1,5 +1,5 @@
 # Techa-app
-Live link: https://techa-app.herokuapp.com/
+<a href="https://techa-app.herokuapp.com/" >Live Link!</a>
 
 ## Techa description
 Techa is a platform where people share their love for technogoly! Teacha-app users can create post showing off their own tech!. Making a post means that other users can interact with it! Leaving comments under others post. Express you interest in techonogoly with others, see fascinating new tech others have, and build a collection post for other to see!
