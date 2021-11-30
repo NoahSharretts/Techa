@@ -91,3 +91,7 @@
 #usernameComment{
  font-weight: bolder;
 }
+
+button {
+  background-color: salmon;
+}
