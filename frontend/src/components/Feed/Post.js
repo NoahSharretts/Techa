@@ -37,9 +37,9 @@ function Post({ post }) {
         <div className='imgContainer'>
           <img id='postPhoto' src={post.photo}></img>
         </div>
-        <div>
+        <div className='ownerButtons'>
           {(post.userId === user.id)? 
-            <div>
+            <div className='ownerButtons'>
               <EditPostModal post={post} />
               <button onClick={handleDelete} value={post.id}>Delete</button>
             </div> : null

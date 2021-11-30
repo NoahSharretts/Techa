@@ -6,37 +6,52 @@
 .expandBox {
   display: flex;
   flex-direction: row;
-  height: fit-content;
+  max-height: 900px;
   width: fit-content;
+  /* overflow-y:scroll; */
 }
+
+
 .commentsFeed{
-  height: inherit;
-  overflow: scroll;
+  display: flex;
+  overflow-y: scroll;
   overflow-x: hidden;
+  flex-direction: column;
+  height: 900px;
 }
 .commentsContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 325px;
-  max-height: 900px;
+  height: 900px;
+  
+}
+
+.ownerButtons {
+  display: flex;
   
 }
 
 .avatarComment{
   display: flex;
   align-items: center;
+  overflow-wrap: break-word;
 }
 
 #avatarComment{
   display: flex;
   align-items: center;
+  overflow-wrap: break-word;
+
 }
 
 .postDescription {
   padding-left: 5px;
   padding-bottom: 5px;
   border-bottom: 1px solid black;
+  overflow-wrap: break-word;
+
 }
 
 #commentBody {
@@ -45,15 +60,21 @@
   padding: 6px;
   height: 100px;
   border: 1px solid black;
+  overflow-wrap: break-word;
+
 }
 
 .commentInputContainer {
   width: 225px;
   bottom: 0;
+  overflow-wrap: break-word;
+
 }
 
 .comment {
   height: fit-content;
+  overflow-wrap: break-word;
+
 }
  
 .commentBox {

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { allUsers } from "../../store/users"; 
 import { deletePost } from '../../store/post';
 import { getComments, createComment, deleteComment } from '../../store/comment'
-import EditPostModal from "../EditPostModal";
+import EditPostModal from '../EditPostModal'
 import EditCommentModal from '../EditCommentModal';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -16,7 +16,7 @@ function CreatePostForm({ setShowForm, post }) {
   const users = useSelector((state) => state.users)
   const allComments = useSelector((state) => state.comments);
   // const postComments = Object.values(allComments).find((comment) => comment.userId === user.id)
-  const [body, setBody] = useState('');
+  // const [body, setBody] = useState('');
   
   useEffect(() => {
     dispatch(getComments());
@@ -66,7 +66,7 @@ function CreatePostForm({ setShowForm, post }) {
           <div>
             {(post.userId === user.id)? 
               <div>
-                <EditPostModal postId={post.id}/>
+                <EditPostModal post={post}/>
                 <button onClick={handleDelete} value={post.id}>Delete</button>
               </div> : null
             }
@@ -74,14 +74,14 @@ function CreatePostForm({ setShowForm, post }) {
         </div>
       </div>
       <div className='commentsContainer'>
-        <div className='avatarComment'>
-          <img id='avatarImgComment' src={ post?.User?.avatar} />
-          <div id='usernameComment'>{ post?.User?.username }</div>
-        </div>
-        <div className='postDescription'>
-        {post.body}
-        </div>
-          <div className='commentsFeed'>
+        <div className='commentsFeed'>
+          <div className='avatarComment'>
+            <img id='avatarImgComment' src={ post?.User?.avatar} />
+            <div id='usernameComment'>{ post?.User?.username }</div>
+          </div>
+          <div className='postDescription'>
+          {post.body}
+          </div>
             {Object.values(allComments).map(comment => 
               <div className='commentBox' key={comment.id}>
                 { comment.postId === post.id && (
@@ -93,10 +93,10 @@ function CreatePostForm({ setShowForm, post }) {
                     <p id='commentBody'>{comment.body}</p>
                     <div className='deleteButton'>
                       { comment.userId === user.id && (
-                        <> 
+                        <div className='ownerButtons'> 
                           <EditCommentModal comment={comment} />
                           <button value={comment.id} onClick={handleCommentDelete}>Del</button> 
-                        </> 
+                        </div> 
                       )
                       }
                     </div>
