@@ -30,9 +30,9 @@ function Post({ post }) {
           <div className='avatarImg'>
             <img id='avatarImg' src={ post?.User?.avatar} />
           </div>
-          <Link to={`/users/${post.userId}`}>
+          {/* <Link to={`/users/${post.userId}`}>
+          </Link> */}
             <div id='username'>{ post?.User?.username }</div>
-          </Link>
         </div>
         <div className='imgContainer'>
           <img id='postPhoto' src={post.photo}></img>
