@@ -1,0 +1,22 @@
+.splash {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+}
+
+.loginContainer {
+  padding:  20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#modal-content {
+  padding: 15px;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

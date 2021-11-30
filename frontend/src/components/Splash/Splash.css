@@ -2,10 +2,42 @@ body {
   background-image: URL(https://www.redpoints.com/wp-content/uploads/2019/01/consumer20electronics201.png);
 }
 
+.splash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
 .splashBox {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: whitesmoke;
+  padding: 10px;
+  width: 66%;
+  height: 350px;
+  border: 1px solid black;
+}
+
+#techa {
+  font-size: 74px;
+}
+
+#root {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
+.buttonDiv {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+  justify-content: center;
+  align-items: center;
+}

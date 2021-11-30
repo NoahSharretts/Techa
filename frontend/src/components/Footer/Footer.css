@@ -5,10 +5,8 @@
   justify-content: center;
   text-align: center;
   width: 100%;
-  position: sticky;
-  /* bottom: -15px;
-  left: 30%; */
-  /* transform: translateX(-45%); */
+  position: fixed;
+  bottom: 0;
   background-color: salmon;
 }
 

@@ -1,4 +1,5 @@
 // CreateUser.js file
+import './CreateUser.css';
 import { useState } from "react";
 import { createUser } from '../../store/session';
 import { Redirect } from "react-router-dom";
@@ -43,7 +44,7 @@ const CreateUser = () => {
 
 
   return (
-    <div>
+    <div className='signupDiv'>
       <h1>Get Started!</h1>
       {errors.length > 0 &&
         errors.map((error) => <div key={error}>{error}</div>)}
