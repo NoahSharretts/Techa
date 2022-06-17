@@ -54,7 +54,7 @@ function CreatePostForm({ setShowForm, post }) {
  
   return (
     <div className='expandBox'>
-      <div className='feedContainer'>
+      <div className='postDiv'>
         <div className='postContainer'>
           <div className='avatarDiv'>
             <img id='avatarImg' src={ post?.User?.avatar} />

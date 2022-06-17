@@ -11,7 +11,7 @@
   /* overflow-y:scroll; */
 }
 
-.feedContainer {
+.postDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
