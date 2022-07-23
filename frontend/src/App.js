@@ -43,7 +43,7 @@ function App() {
           <Route exact path='/feed'>
           </Route>
           <Route exact path='/users/:id'>
-            <ProfilePage />
+           {sessionUser? <ProfilePage /> : <Splash />} 
           </Route>
         </Switch>
         <Footer />

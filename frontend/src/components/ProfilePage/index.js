@@ -36,9 +36,13 @@ function ProfilePage() {
           <button>Follow</button>
         </div>
       </div>
+      <br></br>
       <div className='postsContainer'>
         {posts?.map((post) => (
-          <div key={post.id}>{post.body}</div>
+          <div className='profilePost' key={post.id}>
+            <img id='postPhoto' src={post.photo}></img>
+            <PostModal post={post} />
+          </div>
           
           
         ))}

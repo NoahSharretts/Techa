@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
-
+const { Op } = require("sequelize");
 const { singlePublicFileUpload }  = require("../../awsS3");
 const { singleMulterUpload } = require("../../awsS3");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -70,5 +70,31 @@ router.get('/:id(\\d+)',asyncHandler( async(req, res, next) => {
  })
  return res.json(user)
 }))
+
+// Searching for a User
+router.put(
+  "/search",
+  asyncHandler(async function (req, res) {
+    const search = req.body.input;
+    let users;
+    let searchResult = false;
+    if (search !== undefined) {
+      users = await User.findAll({
+        where: {
+          username: {
+            [Op.iLike]: `%${search}%`,
+          },
+        },
+      });
+      if (users.length > 0) {
+        searchResult = true;
+      }
+    } else {
+      searchResult = false;
+      users = await User.findAll();
+    }
+    return res.json(users);
+  })
+);
 
 module.exports = router;

@@ -2,6 +2,7 @@ import {csrfFetch} from './csrf';
 
 const GET_USERS = 'GET_USERS'
 const ONE_USER = 'ONE_USER'
+const SEARCH_USERS = 'SEARCH_USERS'
 
 const getUsers = (users) => {
     return {
@@ -10,17 +11,24 @@ const getUsers = (users) => {
     }
 }
 
-const getUser = (posts) => {
+const getUser = (user) => {
   return {
-      type: ONE_USER,
-      payload: posts
+    type: ONE_USER,
+    payload: user
+  }
+}
+
+const searchUsers = (users) => {
+  return {
+    type: SEARCH_USERS,
+    payload: users
   }
 }
 
 export const allUsers = (users) => async dispatch => {
-    const res = await csrfFetch(`/api/users`)
-    const data = await res.json()
-    dispatch(getUsers(data))
+  const res = await csrfFetch(`/api/users`)
+  const data = await res.json()
+  dispatch(getUsers(data))
 }
 
 export const getOneUser = (id) => async dispatch => {
@@ -29,6 +37,17 @@ export const getOneUser = (id) => async dispatch => {
   dispatch(getUser(data));
   return data;
 }
+
+export const searchUser = (input) => async (dispatch) => {
+  const user ={ input }
+  const res = await csrfFetch(`/api/users/search`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user),
+  });
+  const data = await res.json();
+  dispatch(searchUsers(data));
+};
 
 const initialState = {}
 export default function usersReducer(state = initialState, action) {
@@ -45,6 +64,12 @@ export default function usersReducer(state = initialState, action) {
 
           newState = user
           return newState;
+        case SEARCH_USERS:
+          const searchedUsers = {}
+          action.payload.forEach((user) => {
+            searchedUsers[user.id] = user
+          })
+          return {...searchedUsers}
         default:
             return state
 }
