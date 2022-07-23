@@ -1,7 +1,7 @@
 import {csrfFetch} from './csrf';
 
-const GET_USERS = 'users/GET_USERS'
-const USER_POSTS = 'USER_POSTS'
+const GET_USERS = 'GET_USERS'
+const ONE_USER = 'ONE_USER'
 
 const getUsers = (users) => {
     return {
@@ -10,9 +10,9 @@ const getUsers = (users) => {
     }
 }
 
-const userPosts = (posts) => {
+const getUser = (posts) => {
   return {
-      type: USER_POSTS,
+      type: ONE_USER,
       payload: posts
   }
 }
@@ -23,11 +23,10 @@ export const allUsers = (users) => async dispatch => {
     dispatch(getUsers(data))
 }
 
-export const getUserPosts = (id) => async dispatch => {
-  console.log(id, 'thunk')
+export const getOneUser = (id) => async dispatch => {
   const res = await csrfFetch(`/api/users/${id}`);
   const data = await res.json()
-  dispatch(userPosts(data));
+  dispatch(getUser(data));
   return data;
 }
 
@@ -40,11 +39,11 @@ export default function usersReducer(state = initialState, action) {
               allUsers[user.id] = user;
           })
           return { ...state, ...allUsers}
-        case USER_POSTS:
+        case ONE_USER:
           let newState = Object.assign({}, state)
-          action.payload.forEach(post => {
-            newState[post.id] = post
-          });
+          let user = action.payload
+
+          newState = user
           return newState;
         default:
             return state

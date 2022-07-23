@@ -1,0 +1,21 @@
+.profileContainer  {
+  padding: 20px;
+  background-color: darkgrey;
+  display: flex;
+
+}
+
+.profileHeader {
+  background-color: aliceblue;
+}
+
+.profileImg {
+  height: 60px;
+  width: 60px;
+  
+}
+
+#profileImg {
+  height: 60px;
+  width: 60px;
+}

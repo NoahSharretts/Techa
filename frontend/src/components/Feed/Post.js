@@ -12,10 +12,6 @@ function Post({ post }) {
   const user = useSelector((state) => state.session.user)
   
 
-  // useEffect(() => {
-  //   dispatch(getPosts());
-  // }, [dispatch])
-
   const handleDelete = (e) => {
     dispatch(deletePost(e.target.value))
   }
