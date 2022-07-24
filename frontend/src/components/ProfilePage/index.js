@@ -5,7 +5,7 @@ import { useParams, } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import {  getOneUser } from '../../store/users'
 import PostModal from '../PostModal';
-
+import Friendship from './Friendship';
 
 
 function ProfilePage() {
@@ -33,7 +33,7 @@ function ProfilePage() {
           <h3>{user.username}</h3>
         </div>
         <div className='followBtn'>
-          <button>Follow</button>
+          <Friendship />
         </div>
       </div>
       <br></br>

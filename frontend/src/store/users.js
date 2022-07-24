@@ -3,6 +3,7 @@ import {csrfFetch} from './csrf';
 const GET_USERS = 'GET_USERS'
 const ONE_USER = 'ONE_USER'
 const SEARCH_USERS = 'SEARCH_USERS'
+const FRIENDSHIP = 'FRIENDSHIP'
 
 const getUsers = (users) => {
     return {
@@ -25,6 +26,13 @@ const searchUsers = (users) => {
   }
 }
 
+const friendship = (user) => {
+  return {
+    type: FRIENDSHIP,
+    payload: user
+  }
+}
+
 export const allUsers = (users) => async dispatch => {
   const res = await csrfFetch(`/api/users`)
   const data = await res.json()
@@ -38,7 +46,7 @@ export const getOneUser = (id) => async dispatch => {
   return data;
 }
 
-export const searchUser = (input) => async (dispatch) => {
+export const searchUser = (input) => async dispatch => {
   const user ={ input }
   const res = await csrfFetch(`/api/users/search`, {
     method: "PUT",
@@ -48,6 +56,10 @@ export const searchUser = (input) => async (dispatch) => {
   const data = await res.json();
   dispatch(searchUsers(data));
 };
+
+export const searchFriendship = (payload) => async dispatch => {
+
+}
 
 const initialState = {}
 export default function usersReducer(state = initialState, action) {

@@ -6,7 +6,7 @@ const { singlePublicFileUpload }  = require("../../awsS3");
 const { singleMulterUpload } = require("../../awsS3");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, Post, Comment } = require("../../db/models");
+const { User, Post, Comment, } = require("../../db/models");
 const router = express.Router();
 
 const validateSignup = [
@@ -96,5 +96,13 @@ router.put(
     return res.json(users);
   })
 );
+
+// Friends
+router.post('/friends', asyncHandler( async(req, res, next) => {
+  const id = req.params.id;
+
+  let followerCount = await 
+}))
+
 
 module.exports = router;
