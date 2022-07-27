@@ -57,9 +57,7 @@ export const searchUser = (input) => async dispatch => {
   dispatch(searchUsers(data));
 };
 
-export const searchFriendship = (payload) => async dispatch => {
 
-}
 
 const initialState = {}
 export default function usersReducer(state = initialState, action) {
