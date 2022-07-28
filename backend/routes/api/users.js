@@ -96,7 +96,7 @@ router.put(
   })
 );
 
-// Friends
+
 
 
 module.exports = router;

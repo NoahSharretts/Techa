@@ -1,5 +1,5 @@
 .profile-dropdown {
-  position: absolute;
+  position: relative;
 }
 
 .navBar {
@@ -10,5 +10,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  top: 0px;
+  position: sticky;
   justify-content: space-around;
+}
+
+.avatarImg {
+  z-index: 7;
 }
