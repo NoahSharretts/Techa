@@ -10,19 +10,16 @@ import PostModal from '../PostModal';
 function Post({ post }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
-  
 
-  // useEffect(() => {
-  //   dispatch(getPosts());
-  // }, [dispatch])
+
 
   const handleDelete = (e) => {
     dispatch(deletePost(e.target.value))
   }
 
-  
-  
-  
+
+
+
   return (
     <div className='feedContainer'>
       <div className='postContainer' key={post.id}>
@@ -30,15 +27,15 @@ function Post({ post }) {
           <div className='avatarImg'>
             <img id='avatarImg' src={ post?.User?.avatar} />
           </div>
-          {/* <Link to={`/users/${post.userId}`}>
-          </Link> */}
+          <Link to={`/users/${post.userId}`}>
             <div id='username'>{ post?.User?.username }</div>
+          </Link>
         </div>
         <div className='imgContainer'>
           <img id='postPhoto' src={post.photo}></img>
         </div>
         <div className='ownerButtons'>
-          {(post.userId === user.id)? 
+          {(post.userId === user.id)?
             <div className='ownerButtons'>
               <EditPostModal post={post} />
               <button onClick={handleDelete} value={post.id}>Delete</button>
