@@ -10,9 +10,9 @@ function ProfilePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const users = useSelector((state) => state.users);
-  
-  
-  
+
+
+
   // Get postid
 
 
@@ -25,9 +25,9 @@ function ProfilePage() {
     <div className='profileContainer'>
       <div className='header'>
         <h2>Profile Page</h2>
-        {Object.values(users).map(post => 
+        {Object.values(users).map(post =>
           <div>
-            <img src={post.photo} />
+            <img id='postPhoto' src={post.photo} />
           </div>
           )}
       </div>
