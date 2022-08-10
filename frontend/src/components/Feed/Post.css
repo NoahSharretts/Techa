@@ -16,8 +16,9 @@
 .postContainer {
   background-color: darkgray;
   padding: 10px;
+  margin: 20px;
   border: 1px solid black;
-  
+
 }
 
 .avatarDiv {
@@ -43,9 +44,15 @@
   border-radius: 50%;
 }
 
+.imgContainer{
+  max-width: 600px;
+  max-height: 600px;
+}
+
 #postPhoto {
   border: 1px solid black;
-  width: 650px;
+  max-width: inherit;
+  max-height: inherit;
 
 }
 

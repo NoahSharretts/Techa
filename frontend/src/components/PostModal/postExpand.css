@@ -1,12 +1,12 @@
 /* .postContainer {
-  display: flex;
+  max-height: 600px;
 
 } */
 
 .expandBox {
   display: flex;
   flex-direction: row;
-  max-height: 900px;
+  max-height: fit-content;
   width: fit-content;
   /* overflow-y:scroll; */
 }
@@ -24,13 +24,13 @@
   flex-direction: column;
   justify-content: space-between;
   width: 325px;
-  height: 900px;
-  
+  height: 600px;
+
 }
 
 .ownerButtons {
   display: flex;
-  
+
 }
 
 .avatarComment{
@@ -76,7 +76,7 @@
   overflow-wrap: break-word;
 
 }
- 
+
 .commentBox {
   height: fit-content;
   width: fit-content;
