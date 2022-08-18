@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom'
 import LoginFormModal from '../LoginFormModal';
 
 function Splash() {
-  
-  
-  
-  
-  
+
+
+
+
+
   return (
     <>
       <div className='splashBox'>
@@ -23,3 +23,5 @@ function Splash() {
 }
 
 export default Splash;
+
+

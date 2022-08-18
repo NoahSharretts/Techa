@@ -21,21 +21,21 @@ function CreatePostForm({ setShowForm }) {
       body: "",
       photo: "",
       userId
-      
+
     },
     validationSchema: yup.object({
       body: yup.string().min(5).max(350).required('Description must be be between 5 and 350 characters'),
       photo: yup.mixed().required('Post must have an image!'),
     }),
     onSubmit: async (values) => {
-      dispatch(createPost(values)).then(() => 
+      dispatch(createPost(values)).then(() =>
       dispatch(getPosts())
       )
       setShowForm(false);
     },
   });
 
- 
+
 
   return (
     <div className='postFormContainer'>
@@ -44,7 +44,7 @@ function CreatePostForm({ setShowForm }) {
         <div className='postForm'>
           <div>
             <label htmlFor='photo'>Your photo</label>
-            <input 
+            <input
               id='photo'
               type='file'
               name='photo'
@@ -52,7 +52,7 @@ function CreatePostForm({ setShowForm }) {
               onChange={(event) => {
                 formik.setFieldValue('photo', event.currentTarget.files[0]);
               }
-              } 
+              }
               onBlur={formik.handleBlur}
             />
              {formik.touched.photo && formik.errors.photo ? (
@@ -61,12 +61,12 @@ function CreatePostForm({ setShowForm }) {
           </div>
           <div>
             <label htmlFor='body'>Your description here</label>
-            <textarea 
-              id='body' 
+            <textarea
+              id='body'
               name='body'
-              type='text' 
-              onChange={formik.handleChange} 
-              value={formik.values.body} 
+              type='text'
+              onChange={formik.handleChange}
+              value={formik.values.body}
               onBlur={formik.handleBlur}
             />
              {formik.touched.body && formik.errors.body ? (
@@ -96,7 +96,7 @@ function CreatePostForm({ setShowForm }) {
   //   }
 
   //   const post = dispatch(createPost(payload))
-    
+
   //   if(post) {
   //     setShowForm(false);
   //     dispatch(getPosts());
@@ -110,7 +110,7 @@ function CreatePostForm({ setShowForm }) {
   // }
 
   // return (
-   
+
   // )
 }
 

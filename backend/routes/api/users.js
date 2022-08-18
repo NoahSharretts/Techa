@@ -38,12 +38,11 @@ router.get('/', asyncHandler(async(req, res) => {
 router.post(
   "/",
   singleMulterUpload("avatar"),
-  validateSignup, 
+  validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
     const avatar = await singlePublicFileUpload(req.file);
     // const avatar = profileImageUrl.toString();
-    console.log(avatar, '----------------------------------')
 
     const user = await User.signup({
       username,
@@ -71,8 +70,9 @@ router.get('/:id(\\d+)',asyncHandler( async(req, res, next) => {
     Comment
   ]
  })
- console.log(posts, '******************************')
+ 
  return res.json(posts)
 }))
+
 
 module.exports = router;

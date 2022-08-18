@@ -13,9 +13,6 @@ function ProfilePage() {
 
 
 
-  // Get postid
-
-
   useEffect(() => {
     dispatch(getUserPosts(id))
   }, [dispatch]);
