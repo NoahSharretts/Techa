@@ -1,0 +1,27 @@
+.userPostWrapper {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.usersPost {
+  width: 293px;
+  height: 293px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#postPhoto {
+  object-fit: fill;
+  height: 100%;
+  width: auto;
+
+}

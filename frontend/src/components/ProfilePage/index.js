@@ -22,11 +22,13 @@ function ProfilePage() {
     <div className='profileContainer'>
       <div className='header'>
         <h2>Profile Page</h2>
-        {Object.values(users).map(post =>
-          <div>
-            <img id='postPhoto' src={post.photo} />
-          </div>
-          )}
+        <div className='userPostWrapper'>
+          {Object.values(users).map(post =>
+            <div key={post.id} className='usersPost'>
+              <img id='postPhoto' src={post.photo} />
+            </div>
+            )}
+        </div>
       </div>
       <div className='postsContainer'>
 
