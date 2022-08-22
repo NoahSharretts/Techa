@@ -1,15 +1,15 @@
 .splash-page {
   width: 100%;
   height: 100vh;
-  /* background-color: rgb(250 250 250); */
+  background-color: rgb(250 250 250);
   padding: 100px 0;
-  background-image: URL(https://www.redpoints.com/wp-content/uploads/2019/01/consumer20electronics201.png);
+  background-image: URL(https://imgs.search.brave.com/qg8_JGMvj9iEtpxtKGJCHW4klep6xUlwXyFrc89eqqA/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJhY2Nlc3Mu/Y29tL2Z1bGwvODI5/MDMyLmpwZw);
   background-size: 100%;
   background-position: 0px -200px;
   background-repeat: no-repeat;
 }
 
-.splash-page {
+.splash-login {
   width: 360px;
   margin: 0 auto;
 }

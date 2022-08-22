@@ -39,7 +39,7 @@ function Splash() {
           Techa - show 0ff y0ur tech, disc0ver new tech, c0nnect!
         </span>
       </div>
-      <div className='splash-loggin'>
+      <div className='splash-login'>
         <div className='form-wrapper'>
           <div className='title-wrapper'>
             <h1>
@@ -76,7 +76,7 @@ function Splash() {
           <p>
             {" "}
             Don't have an account?&nbsp;
-          <Link className="sign-up btn" to="/sign-up">Sign-up</Link>
+          <Link className="sign-up btn" to="/signup">Sign-up</Link>
           </p>
         </div>
       </div>
