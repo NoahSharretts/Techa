@@ -5,15 +5,16 @@ import './PostExpand'
 
 function PostModal({ post }) {
   const [showForm, setShowForm] = useState(false)
-  
+
 
   return (
     <div>
-      <button 
-        id='openButton' 
-        onClick={() => setShowForm(true)} >Open
-      </button>
-      
+      <img
+        src={post.photo}
+        id='post-photo'
+        onClick={() => setShowForm(true)} >
+      </img>
+
       {showForm && (
         <Modal onClose={() => setShowForm(false)}>
           <PostExpand setShowForm={setShowForm} post={post}/>

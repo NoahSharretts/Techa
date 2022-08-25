@@ -1,7 +1,4 @@
-/* .postContainer {
-  max-height: 600px;
-
-} */
+#
 
 .expandBox {
   display: flex;
@@ -90,9 +87,4 @@
 
 #usernameComment{
  font-weight: bolder;
-}
-
-button {
-  background-color: salmon;
-  border-radius: 30px;
 }

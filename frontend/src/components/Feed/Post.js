@@ -31,9 +31,6 @@ function Post({ post }) {
             <div id='username'>{ post?.User?.username }</div>
           </Link>
         </div>
-        <div className='imgContainer'>
-          <img id='postPhoto' src={post.photo}></img>
-        </div>
         <div className='ownerButtons'>
           {(post.userId === user.id)?
             <div className='ownerButtons'>
