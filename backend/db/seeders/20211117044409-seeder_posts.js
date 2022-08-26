@@ -1,5 +1,11 @@
 'use strict';
 
+function getRandomDate() {
+  const maxDate = Date.now();
+  const timestamp = Math.floor(Math.random() * maxDate);
+  return new Date(timestamp);
+}
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Posts', [
@@ -358,10 +364,10 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete(
-      'Posts', 
-      null, 
+      'Posts',
+      null,
       {
-        truncate: true, cascade: true, restartIdentity: true 
+        truncate: true, cascade: true, restartIdentity: true
       }
     );
   }

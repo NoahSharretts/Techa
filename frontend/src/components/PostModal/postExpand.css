@@ -1,4 +1,12 @@
-#
+#post-photo {
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.post-photo-wrapper {
+  max-width: 600px;
+  max-height: 600px;
+}
 
 .expandBox {
   display: flex;

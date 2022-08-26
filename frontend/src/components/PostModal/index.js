@@ -8,7 +8,7 @@ function PostModal({ post }) {
 
 
   return (
-    <div>
+    <div className='post-photo-wrapper'>
       <img
         src={post.photo}
         id='post-photo'
