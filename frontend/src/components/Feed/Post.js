@@ -4,7 +4,6 @@ import { Modal } from '../../context/Modal';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPosts, deletePost, getPostById } from '../../store/post'
-import EditPostModal from '../EditPostModal'
 import PostModal from '../PostModal';
 
 function Post({ post }) {
@@ -13,38 +12,23 @@ function Post({ post }) {
 
 
 
-  const handleDelete = (e) => {
-    dispatch(deletePost(e.target.value))
-  }
-
-
 
 
   return (
-    <div className='feedContainer'>
-      <div className='postContainer' key={post.id}>
-        <div className='avatarDiv'>
-          <div className='avatarImg'>
-            <img id='avatarImg' src={ post?.User?.avatar} />
-          </div>
-          <Link to={`/users/${post.userId}`}>
-            <div id='username'>{ post?.User?.username }</div>
-          </Link>
+    <div className='post'>
+      <div className='post-header'>
+        <div className='avatar-wrapper'>
+          <img id='avatarImg' src={ post?.User?.avatar} />
         </div>
-        <div className='ownerButtons'>
-          {(post.userId === user.id)?
-            <div className='ownerButtons'>
-              <EditPostModal post={post} />
-              <button onClick={handleDelete} value={post.id}>Delete</button>
-            </div> : null
-          }
-          <div className='postDiv'>
-            <PostModal post={post} />
-          </div>
-        </div>
-        <div className='descriptionBox'>
-          <span id='descUsername'>{ post?.User?.username }</span>{post.body}
-        </div>
+        <Link to={`/users/${post.userId}`}>
+          <div id='username'>{ post?.User?.username }</div>
+        </Link>
+      </div>
+      <div className='postDiv'>
+        <PostModal post={post} />
+      </div>
+      <div className='descriptionBox'>
+        <span id='descUsername'>{ post?.User?.username }</span>{post.body}
       </div>
     </div>
   )
