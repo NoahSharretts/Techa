@@ -3,18 +3,18 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useParams, } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { allUsers, getUserPosts } from '../../store/users'
+import { allUsers, getOneUser } from '../../store/users'
 
 
 function ProfilePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const users = useSelector((state) => state.users);
+  const posts = useSelector((state) => state.users);
 
-
+  console.log(posts, 'here')
 
   useEffect(() => {
-    dispatch(getUserPosts(id))
+    dispatch(getOneUser(id))
   }, [dispatch]);
 
 
@@ -23,7 +23,7 @@ function ProfilePage() {
       <div className='header'>
         <h2>Profile Page</h2>
         <div className='userPostWrapper'>
-          {Object.values(users).map(post =>
+          {Object.values(posts).map(post =>
             <div key={post.id} className='usersPost'>
               <img id='postPhoto' src={post.photo} />
             </div>

@@ -20,15 +20,15 @@ function Post({ post }) {
         <div className='avatar-wrapper'>
           <img id='avatarImg' src={ post?.User?.avatar} />
         </div>
-        <Link to={`/users/${post.userId}`}>
-          <div id='username'>{ post?.User?.username }</div>
+        <Link className='username-link' to={`/users/${post.userId}`}>
+          { post?.User?.username }
         </Link>
       </div>
-      <div className='postDiv'>
+      <div className='post-modal-wrapper'>
         <PostModal post={post} />
       </div>
-      <div className='descriptionBox'>
-        <span id='descUsername'>{ post?.User?.username }</span>{post.body}
+      <div className='description-wrapper'>
+        <span id='description'>{ post?.User?.username }</span>{post.body}
       </div>
     </div>
   )

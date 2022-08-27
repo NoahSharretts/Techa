@@ -61,17 +61,13 @@ router.post(
 
 router.get('/:id(\\d+)',asyncHandler( async(req, res, next) => {
  const userId = req.params.id;
- const posts = await Post.findAll({
-   where: {
-     userId: userId
-  },
+ const user = await User.findByPk(userId, {
   include: [
-    User,
-    Comment
+    Post
   ]
  })
- 
- return res.json(posts)
+
+ return res.json(user)
 }))
 
 
