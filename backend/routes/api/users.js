@@ -61,11 +61,7 @@ router.post(
 
 router.get('/:id(\\d+)',asyncHandler( async(req, res, next) => {
  const userId = req.params.id;
- const user = await User.findByPk(userId, {
-  include: [
-    Post
-  ]
- })
+ const user = await User.findByPk(userId)
 
  return res.json(user)
 }))

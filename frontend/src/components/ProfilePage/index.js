@@ -3,19 +3,27 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useParams, } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { allUsers, getOneUser } from '../../store/users'
+import { getOneUser } from '../../store/users'
+import { getUserPosts } from '../../store/profilePage'
 
 
 function ProfilePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const posts = useSelector((state) => state.users);
+  const user = useSelector((state) => state.users[`${id}`]);
+  const posts = useSelector((state) => state.userPosts)
 
-  console.log(posts, 'here')
+  console.log(user, 'user')
+  console.log(posts, 'posts')
 
-  useEffect(() => {
+
+  useEffect( () => {
+
     dispatch(getOneUser(id))
-  }, [dispatch]);
+    dispatch(getUserPosts(id))
+
+
+  }, [ ]);
 
 
   return (

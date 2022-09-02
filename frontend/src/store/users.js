@@ -41,10 +41,10 @@ export default function usersReducer(state = initialState, action) {
           })
           return { ...state, ...allUsers}
         case GET_USER:
-          let newState = Object.assign({}, state)
-          action.payload.forEach(post => {
-            newState[post.id] = post
-          });
+          let newState = {};
+          // newState = Object.assign({}, state)
+          newState[action.payload.id] = action.payload
+
           return newState;
         default:
             return state

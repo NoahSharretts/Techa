@@ -14,16 +14,16 @@ function Navigation({ isLoaded }){
   // if (sessionUser) {
   //   sessionLinks = (
   //     <>
-        
+
   //     </>
   //   );
-  // } 
+  // }
 
   return (
     <>
       {sessionUser && (
         <div className='navBar'>
-          <NavLink exact to="/">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
           <CreatePostModal />
           <ProfileButton user={sessionUser} />
         </div>

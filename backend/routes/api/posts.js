@@ -50,7 +50,20 @@ router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
   return res.json(post)
 }))
 
-// POST: create post 
+// GET: posts of user by user id
+router.get('/user/:id(\\d+)', asyncHandler( async(req, res, next) => {
+  const userId = req.params.id
+  const posts = await Post.findAll({
+    where: {
+      userId: userId
+    }
+  })
+  console.log(posts, "################################***************************************")
+  return res.json(posts)
+
+}))
+
+// POST: create post
 router.post('/', singleMulterUpload("photo"), requireAuth, asyncHandler( async(req, res, next) => {
   console.log('herehrehrherhehrehrherhere')
   const { body, userId } = req.body;
@@ -58,7 +71,7 @@ router.post('/', singleMulterUpload("photo"), requireAuth, asyncHandler( async(r
   const photo = await singlePublicFileUpload(req.file);
 
 
-  
+
   const post = await Post.create({
     userId,
     photo,
@@ -73,7 +86,7 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
   const {id} = req.body
   const post = await Post.findByPk(id)
   // console.log(req.body, '================================')
-  
+
 
   post.update(req.body)
 

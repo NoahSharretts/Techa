@@ -4,10 +4,12 @@ import session from './session'
 import postReducer from './post';
 import commentReducer from './comment';
 import usersReducer from './users';
+import profilePageReducer from './profilePage';
 
 const rootReducer = combineReducers({
   session,
   posts: postReducer,
+  userPosts: profilePageReducer,
   comments: commentReducer,
   users: usersReducer
 });
