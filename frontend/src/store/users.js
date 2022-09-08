@@ -24,7 +24,6 @@ export const allUsers = (users) => async dispatch => {
 }
 
 export const getOneUser = (id) => async dispatch => {
-  console.log(id, 'thunk')
   const res = await csrfFetch(`/api/users/${id}`);
   const data = await res.json()
   dispatch(getUser(data));
@@ -41,10 +40,7 @@ export default function usersReducer(state = initialState, action) {
           })
           return { ...state, ...allUsers}
         case GET_USER:
-          let newState = {};
-          // newState = Object.assign({}, state)
-          newState[action.payload.id] = action.payload
-
+          let newState = { ...action.payload };
           return newState;
         default:
             return state

@@ -1,4 +1,4 @@
-.userPostWrapper {
+.users-posts-wrapper {
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -8,18 +8,17 @@
   align-items: center;
 }
 
-.usersPost {
+.users-posts {
   width: 293px;
   height: 293px;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#postPhoto {
+#post-photo {
   object-fit: fill;
   height: 100%;
   width: auto;

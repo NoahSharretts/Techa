@@ -58,14 +58,11 @@ router.get('/user/:id(\\d+)', asyncHandler( async(req, res, next) => {
       userId: userId
     }
   })
-  console.log(posts, "################################***************************************")
   return res.json(posts)
-
 }))
 
 // POST: create post
 router.post('/', singleMulterUpload("photo"), requireAuth, asyncHandler( async(req, res, next) => {
-  console.log('herehrehrherhehrehrherhere')
   const { body, userId } = req.body;
 
   const photo = await singlePublicFileUpload(req.file);
