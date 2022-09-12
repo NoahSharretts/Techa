@@ -5,13 +5,15 @@ import postReducer from './post';
 import commentReducer from './comment';
 import usersReducer from './users';
 import profilePageReducer from './profilePage';
+import followReducer from './follow';
 
 const rootReducer = combineReducers({
   session,
   posts: postReducer,
   userPosts: profilePageReducer,
   comments: commentReducer,
-  users: usersReducer
+  users: usersReducer,
+  friends: followReducer
 });
 
 let enhancer;

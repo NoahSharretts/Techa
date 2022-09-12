@@ -32,7 +32,8 @@ router.get('/', asyncHandler( async(req, res, next) => {
   const post = await Post.findAll({
     include: [
       User,
-      Comment
+      Comment,
+      Like
     ]
   });
   return res.json(post)

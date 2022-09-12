@@ -5,7 +5,8 @@ import { useParams, } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneUser } from '../../store/users'
 import { getUserPosts } from '../../store/profilePage'
-
+import { findFollows, followUser, unfollowUser } from '../../store/follow';
+import Post from '../Feed/Post';
 
 function ProfilePage() {
   const dispatch = useDispatch();
@@ -13,7 +14,6 @@ function ProfilePage() {
   const user = useSelector((state) => state.users);
   const posts = useSelector((state) => state.userPosts)
 
-  console.log(user, 'user')
 
   useEffect( () => {
     dispatch(getOneUser(id))
@@ -31,10 +31,12 @@ function ProfilePage() {
           <div className='username-wrapper'>
             <h2>{ user.username }</h2>
           </div>
+          
           <div className='users-posts-wrapper'>
             {Object.values(posts).map(post =>
               <div key={post.id} className='users-posts'>
-                <img id='post-photo' src={post.photo} />
+                {/* <img id='post-photo' src={post.photo} /> */}
+                <Post post={post} />
               </div>
               )}
           </div>

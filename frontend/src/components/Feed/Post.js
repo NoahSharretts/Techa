@@ -10,8 +10,7 @@ function Post({ post }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
 
-
-
+  console.log(post, 'post')
 
 
   return (
@@ -28,7 +27,13 @@ function Post({ post }) {
         <PostModal post={post} />
       </div>
       <div className='description-wrapper'>
-        <span id='description'>{ post?.User?.username }</span>{post.body}
+        <p className='likes-count'>
+          { post?.Likes?.length } {post?.Likes?.length === 1 ? 'like' : 'likes'}
+        </p>
+        <Link className='username-link' to={`/users/${post.userId}`}>
+            { post?.User?.username }
+        </Link>
+        <span id='description'>{ post.body }</span>
       </div>
     </div>
   )
