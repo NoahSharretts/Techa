@@ -6,7 +6,7 @@ import commentReducer from './comment';
 import usersReducer from './users';
 import profilePageReducer from './profilePage';
 import followReducer from './follow';
-import likeReducer from './like';
+
 
 const rootReducer = combineReducers({
   session,
@@ -15,7 +15,6 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   users: usersReducer,
   friends: followReducer,
-  likes: likeReducer
 });
 
 let enhancer;

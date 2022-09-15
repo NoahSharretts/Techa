@@ -21,6 +21,19 @@
   border: 1px solid black;
 }
 
+.post-icons {
+  padding: 6px 2px px 10px;
+  display: flex;
+  grid-gap: 10px;
+  gap: 10px;
+  align-items: center;
+}
+
+.postcard-icon-comment{
+  position: relative;
+  top: 3px;
+}
+
 .post-header {
   display: flex;
   justify-content: space-between;
@@ -57,6 +70,7 @@
 
 }
 
+
 .description-wrapper{
   border: 1px solid black;
   background-color: whitesmoke;
@@ -67,4 +81,27 @@
 
 #description {
   font-weight: bolder;
+}
+
+.like {
+  cursor: pointer;
+}
+
+.likes-count{
+  padding-top: .5rem;
+  padding-left: .75rem;
+}
+
+.my-red-heart {
+  font-size: 1.6rem;
+  color: rgb(172, 46, 46);
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+}
+
+.my-heart {
+  font-size: 1.6rem;
+  padding-left: .75rem;
+  padding-top: 0.5rem;
+  color: rgb(36, 36, 36);
 }

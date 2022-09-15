@@ -5,24 +5,12 @@ const { User, Post, Topic, Like, Comment } = require("../../db/models");
 
 const router = express.Router();
 
-router.get('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
-  const postId = re.params.id;
-  const likes = await Like.findAll({
-    where: {
-      postId: postId
-    }
-  })
-
-  return res.json(likes)
-}))
 
 router.post('/:id(\\d+)',
   requireAuth,
   asyncHandler( async(req, res) => {
     const postId = req.params.id;
     const userId = req.user.dataValues.id;
-
-    console.log(userId, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
     const aLike = await Like.findOne({
       where: {
