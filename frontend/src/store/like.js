@@ -31,7 +31,7 @@ export const likePost = id => async dispatch => {
 
   if (response.ok) {
     const alike = await response.json();
-    dispatch(like(like))
+    dispatch(like(alike))
   }
 }
 
@@ -70,15 +70,13 @@ const intialState = {};
 const likeReducer = (state = intialState, action) => {
   switch(action.type) {
     case LIKE: {
-
-    }
-    case ALL_LIKE: {
-
-    }
-    case ONE_LIKE: {
-
+      let newState = {};
+      newState['Likes'] = action.payload
     }
     default:
       return state
   }
 }
+
+
+export default likeReducer;

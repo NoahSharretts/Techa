@@ -36,7 +36,6 @@ function CreatePostForm({ setShowForm }) {
   });
 
 
-
   return (
     <div className='postFormContainer'>
       <h2>Share your tech off!</h2>

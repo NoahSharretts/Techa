@@ -20,12 +20,14 @@ router.post('/:id(\\d+)',
   requireAuth,
   asyncHandler( async(req, res) => {
     const postId = req.params.id;
-    const userId = res.locals.user.id;
+    const userId = req.user.dataValues.id;
+
+    console.log(userId, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
     const aLike = await Like.findOne({
       where: {
-        postId,
-        userId
+        postId: postId,
+        userId: userId
       }
     });
 
