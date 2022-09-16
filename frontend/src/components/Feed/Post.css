@@ -72,15 +72,12 @@
 
 
 .description-wrapper{
-  border: 1px solid black;
-  background-color: whitesmoke;
-  width: 600px;
-  overflow-wrap: break-word;
-  padding: 30px;
+ padding: 5px;
 }
 
 #description {
-  font-weight: bolder;
+  overflow: auto;
+  overflow-wrap: break-word;
 }
 
 .like {

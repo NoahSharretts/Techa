@@ -15,7 +15,16 @@ function Post({ post }) {
     await dispatch(getPosts())
   }
 
+  const lastComment = () => {
+    if (!post?.Comments) {
+      return null;
+    }
 
+    if (post.Comments) {
+      const comment = post?.Comments[post.Comments.length - 1];
+      return <div className="last-comment-wrapper">{comment}</div>;
+    }
+  };
 
   const isLiked = () => {
     const likes = post.Likes;
@@ -115,6 +124,7 @@ function Post({ post }) {
         </Link>
         <span id='description'>{ post.body }</span>
       </div>
+      <div className="side-spacing">{lastComment()}</div>
     </div>
   )
 }
