@@ -7,6 +7,9 @@ import { likePost } from '../../store/like';
 import PostModal from '../PostModal';
 import CommentModal from '../PostModal/commentExpand';
 import CommentTwoModal from '../PostModal/commentExpandTwo';
+import { getComments, createComment, deleteComment } from '../../store/comment'
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 function Post({ post }) {
   const dispatch = useDispatch();
@@ -17,6 +20,21 @@ function Post({ post }) {
     await dispatch(getPosts())
   }
 
+  const formik = useFormik({
+    initialValues: {
+      body: "",
+      userId: user.id,
+      postId: post.id
+
+    },
+    validationSchema: yup.object({
+      body: yup.string().min(5).max(350).required('Comment must be be between 5 and 350 characters'),
+    }),
+    onSubmit: async (values) => {
+      dispatch(createComment(values))
+      formik.values.body = "";
+    },
+  });
 
   const isLiked = () => {
     const likes = post.Likes;
@@ -36,9 +54,6 @@ function Post({ post }) {
     await dispatch(getPosts())
   }
 
-  const commentBtn = async () => {
-
-  }
 
   return (
     <div className='post'>
@@ -99,6 +114,24 @@ function Post({ post }) {
         <span id='description'>{ post.body }</span>
       </div>
       <CommentTwoModal post={post} />
+      <form onSubmit={formik.handleSubmit}>
+        <div className='postForm'>
+          <div>
+            <textarea
+              id='body'
+              name='body'
+              type='text'
+              onChange={formik.handleChange}
+              value={formik.values.body}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.body && formik.errors.body ? (
+              <div className="errorText">{formik.errors.body}</div>
+            ) : null}
+          </div>
+            <button type="submit">Done</button>
+        </div>
+      </form>
     </div>
   )
 }
