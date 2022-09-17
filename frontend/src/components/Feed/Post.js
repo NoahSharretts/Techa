@@ -14,6 +14,8 @@ import { useFormik } from 'formik';
 function Post({ post }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
+  const numberOfComments = post?.Comments?.length;
+  const hasComments = numberOfComments > 0;
 
   const like = async () => {
     await dispatch(likePost(post.id))
@@ -54,6 +56,20 @@ function Post({ post }) {
     await dispatch(getPosts())
   }
 
+  const lastComment = () => {
+    if (!hasComments) {
+      return null;
+    }
+
+    if (post.Comments) {
+      const comment = post?.Comments[0];
+      return <div className="last-comment-wrapper">{comment.body}</div>;
+    }
+  };
+
+  // let lastComment = post?.Comments[post.Comments.length - 1]
+
+  // console.log(lastComment, 'here')
 
   return (
     <div className='post'>
@@ -114,6 +130,9 @@ function Post({ post }) {
         <span id='description'>{ post.body }</span>
       </div>
       <CommentTwoModal post={post} />
+      <div>
+        <span>{lastComment()}</span>
+      </div>
       <form onSubmit={formik.handleSubmit}>
         <div className='postForm'>
           <div>
