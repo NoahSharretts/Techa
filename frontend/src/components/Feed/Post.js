@@ -6,6 +6,7 @@ import { getPosts } from '../../store/post'
 import { likePost } from '../../store/like';
 import PostModal from '../PostModal';
 import CommentModal from '../PostModal/commentExpand';
+import CommentTwoModal from '../PostModal/commentExpandTwo';
 
 function Post({ post }) {
   const dispatch = useDispatch();
@@ -16,16 +17,6 @@ function Post({ post }) {
     await dispatch(getPosts())
   }
 
-  const lastComment = () => {
-    if (!post?.Comments) {
-      return null;
-    }
-
-    if (post.Comments) {
-      const comment = post?.Comments[post.Comments.length - 1];
-      return <div className="last-comment-wrapper">{comment}</div>;
-    }
-  };
 
   const isLiked = () => {
     const likes = post.Likes;
@@ -107,7 +98,7 @@ function Post({ post }) {
         </Link>
         <span id='description'>{ post.body }</span>
       </div>
-      {/* <div className="side-spacing">{lastComment()}</div> */}
+      <CommentTwoModal post={post} />
     </div>
   )
 }
