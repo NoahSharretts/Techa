@@ -36,10 +36,11 @@ function CreateComment({  post }) {
   return (
     <div className='comment-form-container'>
       <form onSubmit={formik.handleSubmit}>
-        <div className='postForm'>
+        <div className='fieldDiv'>
           <div>
-            <textarea
+            <input
               id='body'
+              placeholder='Add a comment...'
               name='body'
               type='text'
               onChange={formik.handleChange}
@@ -50,7 +51,7 @@ function CreateComment({  post }) {
               <div className="errorText">{formik.errors.body}</div>
             ) : null}
           </div>
-            <button type="submit">Done</button>
+            <button id='submit-comment-btn' type="submit">Post</button>
         </div>
       </form>
     </div>

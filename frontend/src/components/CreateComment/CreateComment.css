@@ -4,5 +4,18 @@
 }
 
 #body {
-  
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  border: none;
+}
+
+#submit-comment-btn {
+  width: 10%;
+  height: 40px;
+  background: none;
+  padding: 10px;
+  border: none;
+  color: #0095f6;
+  font-weight: bold;
 }
