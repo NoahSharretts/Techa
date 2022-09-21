@@ -1,11 +1,14 @@
 #post-photo {
-  max-width: inherit;
-  max-height: inherit;
+  /* max-width: inherit;
+  max-height: inherit; */
+  cursor: pointer;
+  width: 100%;
+  max-height: 600px;
+
 }
 
 .post-photo-wrapper {
   max-width: 600px;
-  max-height: 600px;
 }
 
 .expandBox {
@@ -95,4 +98,12 @@
 
 #usernameComment{
  font-weight: bolder;
+}
+
+.last-comment-wrapper {
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

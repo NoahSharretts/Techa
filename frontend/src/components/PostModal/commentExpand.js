@@ -1,7 +1,7 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react'
 import PostExpand from './PostExpand';
-import './PostExpand'
+import './postExpand.css'
 
 
 function CommentModal({ post }) {

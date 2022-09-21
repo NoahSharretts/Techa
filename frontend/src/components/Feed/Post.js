@@ -34,7 +34,7 @@ function Post({ post }) {
     await dispatch(likePost(post.id))
     await dispatch(getPosts())
   }
-  
+
   const unlike = async () => {
     await dispatch(likePost(post.id))
     await dispatch(getPosts())
@@ -54,9 +54,7 @@ function Post({ post }) {
   return (
     <div className='post'>
       <div className='post-header'>
-        <div className='avatar-wrapper'>
-          <img id='avatarImg' src={ post?.User?.avatar} />
-        </div>
+        <img id='avatarImg' src={ post?.User?.avatar} />
         <Link className='username-link' to={`/users/${post.userId}`}>
           { post?.User?.username }
         </Link>
@@ -99,7 +97,7 @@ function Post({ post }) {
           </div>
         )}
         <CommentModal post={post} />
-        </div>
+      </div>
       <p className='likes-count'>
         { post?.Likes?.length } {post?.Likes?.length === 1 ? 'like' : 'likes'}
       </p>
@@ -110,9 +108,7 @@ function Post({ post }) {
         <span id='description'>{ post.body }</span>
       </div>
       <CommentTwoModal post={post} />
-      <div>
-        <span>{lastComment()}</span>
-      </div>
+      <div className='last-commnet'>{lastComment()}</div>
       <CreateComment post={post}/>
     </div>
   )

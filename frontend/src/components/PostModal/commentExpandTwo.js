@@ -1,12 +1,14 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react'
 import PostExpand from './PostExpand';
-import './PostExpand'
+import './postExpand.css'
 
 
 function CommentTwoModal({ post }) {
   const [showForm, setShowForm] = useState(false)
   const comments = post?.Comments.length;
+
+  const 
 
   return (
     <>

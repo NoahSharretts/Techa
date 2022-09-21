@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_COMMENTS = 'LOAD_COMMENTS'
-const LOAD_COMMENT = 'LOAD_COMMENT'
+const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS'
 const ADD_COMMENT = 'ADD_COMMENT'
 const UPDATE_COMMENT = 'UPDATE_COMMENT'
 const DELETE_COMMENT = 'DELETE_COMMENT'
@@ -11,9 +11,9 @@ const load_comments = list => ({
   payload: list
 })
 
-const load_comment = comment => ({
-  type: LOAD_COMMENT,
-  payload: comment
+const load_post_comments = comments => ({
+  type: LOAD_POST_COMMENTS,
+  payload: comments
 })
 
 const add_comment = comment => ({
@@ -42,13 +42,13 @@ export const getComments = () => async dispatch => {
   }
 }
 
-export const getCommentById = (commentId) => async dispatch => {
+export const getPostComments = (postId) => async dispatch => {
 
-  const response = await csrfFetch(`/api/comments/${commentId}`)
+  const response = await csrfFetch(`/api/comments/${postId}`)
 
   if (response.ok) {
-    const comment = await response.json();
-    dispatch(load_comment(comment))
+    const comments = await response.json();
+    dispatch(load_post_comments(comments))
   }
 }
 
@@ -115,9 +115,9 @@ const commentReducer = (state = intialState, action) => {
       newState[newComment.id] = newComment;
       return newState;
     }
-    case LOAD_COMMENT: {
-      let newState = Object.assign({}, state);
-      action.payload.array.forEach(comment => {
+    case LOAD_POST_COMMENTS: {
+      let newState = {}
+      action.payload.forEach(comment => {
         newState[comment.id] = comment
       });
       return newState;

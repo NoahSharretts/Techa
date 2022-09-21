@@ -1,10 +1,12 @@
 .comment-form-container {
+  /* display: flex; */
   margin-top: 10px;
   margin-bottom: 10px;
+  /* flex-direction: row; */
 }
 
 #body {
-  width: 90%;
+  width: 80%;
   height: 40px;
   padding: 10px;
   border: none;

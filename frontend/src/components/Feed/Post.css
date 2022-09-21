@@ -14,11 +14,14 @@
 }
 
 .post {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  height: fit-content;
   width: 600px;
-  border: 1px solid black;
+  border: 1px solid #a1a1a1;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: white;
 }
 
 .post-icons {
@@ -34,15 +37,17 @@
   top: 3px;
 }
 
+.comment-icon {
+  cursor: pointer;
+}
+
 .post-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-direction: row;
   border: 1px solid black;
-  padding: 7px;
-  background-color: lightskyblue;
-  width: 600px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
 }
 
 .avatar-wrapper {
@@ -52,32 +57,35 @@
 }
 
 #avatarImg {
-  border: 1px solid black;
-  height: 50px;
-  width: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  margin-right: 16px;
 }
 
-.imgContainer{
-  max-width: 600px;
-  max-height: 600px;
-}
-
-#postPhoto {
-  border: 1px solid black;
-  max-width: inherit;
-  max-height: inherit;
-
+.username-link {
+  font-weight: bolder;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 
 .description-wrapper{
- padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #description {
   overflow: auto;
   overflow-wrap: break-word;
+}
+
+.last-comment {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .like {

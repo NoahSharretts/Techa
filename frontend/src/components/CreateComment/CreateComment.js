@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 // import { useHistory, } from 'react-router-dom'
 import { allUsers } from "../../store/users";
 import { createComment, getComments } from '../../store/comment';
+import { getPosts } from "../../store/post";
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import './CreateComment.css'
@@ -15,6 +16,7 @@ function CreateComment({  post }) {
   useEffect(() => {
     dispatch(getComments());
     dispatch(allUsers())
+    dispatch(getPosts())
   }, [dispatch])
 
   const formik = useFormik({
@@ -36,7 +38,7 @@ function CreateComment({  post }) {
   return (
     <div className='comment-form-container'>
       <form onSubmit={formik.handleSubmit}>
-        <div className='fieldDiv'>
+        <div className='comment-input-wrapper'>
           <div>
             <input
               id='body'
@@ -51,7 +53,9 @@ function CreateComment({  post }) {
               <div className="errorText">{formik.errors.body}</div>
             ) : null}
           </div>
+          <div className="comment-btn-wrapper">
             <button id='submit-comment-btn' type="submit">Post</button>
+          </div>
         </div>
       </form>
     </div>
