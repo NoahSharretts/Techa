@@ -6,6 +6,7 @@ import commentReducer from './comment';
 import usersReducer from './users';
 import profilePageReducer from './profilePage';
 import followReducer from './follow';
+import searchReducer from './search';
 
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   users: usersReducer,
   friends: followReducer,
+  search: searchReducer
 });
 
 let enhancer;
