@@ -1,9 +1,5 @@
-.profile-dropdown {
-  position: relative;
-}
 
 .navBar {
-  background-color: salmon;
   width: 100%;
   z-index: 1;
   height: 65px;
@@ -11,4 +7,48 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+
+.logout-btn-wrapper {
+  position: relative;
+}
+
+.logout-btn-wrapper .profile-dropdown {
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0px 0px 0px 2px #f0f0f0;
+  border: solid 0px black;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0px;
+  padding: 5px;
+}
+
+.logout-btn-wrapper .profile-dropdown > * {
+  margin-bottom: 10px;
+}
+
+.logout-btn {
+  border: none;
+  background-color: #0095f6;
+  color: white;
+  border-radius: 2px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.logoutBtn::before {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  color: black;
+}
+
+.logoutBtn {
+  font-size: 20px;
+  margin: 10px;
+  height: 20px;
+  width: 20px;
+  color: grey;
 }
