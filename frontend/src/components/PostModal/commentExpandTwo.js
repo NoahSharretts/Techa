@@ -6,16 +6,22 @@ import './postExpand.css'
 
 function CommentTwoModal({ post }) {
   const [showForm, setShowForm] = useState(false)
-  const comments = post?.Comments.length;
+  const numberOfComments = post?.Comments?.length
 
-  const 
+  const anyComments = () => {
+    if (numberOfComments) {
+      return `View all ${numberOfComments} comments`;
+    } else {
+      return `View post details`;
+    }
+  };
 
   return (
     <>
       <div
         className="last-comment-wrapper"
         onClick={() => setShowForm(true)}
-        >{`View all ${comments} comments`}</div>
+        >{anyComments()}</div>
 
       {showForm && (
         <Modal onClose={() => setShowForm(false)}>
