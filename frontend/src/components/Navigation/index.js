@@ -14,6 +14,7 @@ function Navigation({ isLoaded }){
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const searchResults = useSelector(state => state.search)
+  const users = useSelector(state => state.users)
   const results = Object.values(searchResults);
   const [input, setInput] = useState("");
 
@@ -73,7 +74,7 @@ function Navigation({ isLoaded }){
                             className="search-profile-image"
                             alt=""
                             src={res.avatar}
-                          ></img>
+                          />
                         }
                         {<span className="searchUsername">{res.username}</span>}
                       </Link>
@@ -85,8 +86,39 @@ function Navigation({ isLoaded }){
                 </div>
               </div>
             </div>
-            <CreatePostModal />
-            <ProfileButton user={sessionUser} />
+            <div className='nav-buttons'>
+              <NavLink className="home-nav" to="/posts">
+                <svg
+                  aria-label="Home"
+                  className="_8-yf5 "
+                  color="#262626"
+                  fill="#262626"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path
+                    d="M9.005 16.545a2.997 2.997 0 012.997-2.997h0A2.997 2.997 0 0115 16.545V22h7V11.543L12 2 2 11.543V22h7.005z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                  ></path>
+                </svg>
+              </NavLink>
+              <div>
+                <CreatePostModal />
+              </div>
+              <NavLink to={`/users/${sessionUser.id}`}>
+                <img
+                  className="nav-bar-profile-avatar"
+                  src={users[sessionUser.id].avatar}
+                  alt=""
+                />
+              </NavLink>
+              <ProfileButton user={sessionUser} />
+            </div>
           </div>
         </div>
       )}

@@ -154,8 +154,32 @@
   gap: 3px;
 }
 
+.home-nav {
+  width: 20px;
+  color: grey;
+  margin-right: 16px;
+}
+
 .search-username {
   color: #262626;
   font-size: 14px;
   font-weight: 500;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons a {
+  margin: 10px;
+}
+
+.nav-bar-profile-avatar {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  cursor: pointer;
+  display: block !important;
 }
