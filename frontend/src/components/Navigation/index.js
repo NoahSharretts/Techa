@@ -87,7 +87,7 @@ function Navigation({ isLoaded }){
               </div>
             </div>
             <div className='nav-buttons'>
-              <NavLink className="home-nav" to="/posts">
+              <NavLink className="home-nav" to="/">
                 <svg
                   aria-label="Home"
                   className="_8-yf5 "
@@ -113,7 +113,7 @@ function Navigation({ isLoaded }){
               <NavLink to={`/users/${sessionUser.id}`}>
                 <img
                   className="nav-bar-profile-avatar"
-                  src={users[sessionUser.id].avatar}
+                  src={users[sessionUser?.id]?.avatar}
                   alt=""
                 />
               </NavLink>
