@@ -107,3 +107,29 @@
   margin-left: 5px;
   margin-right: 5px;
 }
+
+.post-image-wrapper {
+  width: 293px;
+  height: 293px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-image-wrapper .post-image-wrapper-inner {
+  width: 400px;
+  height: 293px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-image-profile-page {
+  object-fit: fill;
+  height: 100%;
+  width: auto;
+  cursor: pointer;
+}

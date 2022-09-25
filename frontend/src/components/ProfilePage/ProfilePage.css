@@ -1,4 +1,85 @@
+.profile-page {
+  background-color: rgb(250 250 250);
+  width: 100%;
+  height: calc(100% - 64px);
+}
+
+.profile-page-wrapper {
+  margin: 0 auto;
+  display: flex;
+  width: 919px;
+  flex-direction: column;
+}
+
+.profile-page .profile-page-header {
+  flex: 0 0 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  border-bottom: solid 2px rgba(128, 128, 128, 0.26);
+  position: relative;
+}
+
+.profile-page .profile-page-header .avatar-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  overflow: hidden;
+  margin: 0 100px 0 -70px;
+}
+
+.user-posts-wrapper-outer {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-posts-wrapper-outer .section-selector {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.user-posts-wrapper-outer .section-selector .section-selector-button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  color: rgb(142, 142, 142);
+  justify-content: center;
+}
+
+.user-posts-wrapper-outer
+  .section-selector
+  .section-selector-button
+  > *:first-child {
+  margin-right: 5px;
+}
+
 .users-posts-wrapper {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.user-posts-wrapper-outer
+  .section-selector
+  .section-selector-button
+  .svg-wrapper {
+  width: 24px;
+  height: 100%;
+  }
+
+.user-posts-wrapper-outer .section-selector .section-selector-button span {
+  font-size: 11px;
+  font-family: "Inter", sans-serif;
+}
+
+.profile-page .user-posts-wrapper {
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -17,11 +98,4 @@
   justify-content: center;
   align-items: center;
   object-fit: fill;
-}
-
-#post-photo {
-  /* object-fit: fill;
-  height: 100%;
-  width: auto; */
-
 }
