@@ -30,6 +30,11 @@
   margin: 0 100px 0 -70px;
 }
 
+.profile-page .profile-page-header .avatar-wrapper img {
+  height: 100%;
+  object-fit: fill;
+}
+
 .user-posts-wrapper-outer {
   display: flex;
   flex-direction: column;
@@ -98,4 +103,45 @@
   justify-content: center;
   align-items: center;
   object-fit: fill;
+}
+
+.bioFormatting {
+  margin-right: 10px;
+}
+
+.followButton {
+  margin-left: 10px;
+  font-size: 16px;
+  padding: 6px;
+  font-weight: bold;
+  color: white;
+  background: #0095f6;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.unfollowButton {
+  margin-left: 10px;
+  font-size: 16px;
+  padding: 6px;
+  font-weight: bold;
+  background: rgb(250 250 250);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.profile-page .profile-page-header .user-data-wrapper .username span {
+  flex: 0 0 auto;
+}
+.profile-page .profile-page-header .user-data-wrapper .bio {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-page .profile-page-header .user-data-wrapper .bio span {
+  flex: 1 1 auto;
 }

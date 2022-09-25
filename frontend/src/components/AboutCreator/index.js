@@ -110,7 +110,7 @@ function AboutCreator() {
             <div className="user-posts-wrapper">
               <div className="users-post">
                 <a
-                  href="https://www.linkedin.com/in/ann-donnelly/"
+                  href=""
                   target="blank"
                 >
                   <div className="post-image-wrapper-inner">
@@ -124,7 +124,7 @@ function AboutCreator() {
                 </a>
               </div>
               <div className="users-post">
-                <a href="https://github.com/anndonnelly" target="blank">
+                <a href="" target="blank">
                   <div className="post-image-wrapper-inner">
                     <p className="profile-card-text">Github</p>
                     <img
@@ -136,7 +136,7 @@ function AboutCreator() {
                 </a>
               </div>
               <div className="users-post">
-                <a href="https://angel.co/u/ann-donnelly-1" target="blank">
+                <a href="" target="blank">
                   <div className="post-image-wrapper-inner">
                     <p className="profile-card-text">AngelList</p>
                     <img
@@ -149,7 +149,7 @@ function AboutCreator() {
               </div>
               <div className="users-post">
                 <a
-                  href="https://remember-the-crud.herokuapp.com/"
+                  href=""
                   target="blank"
                 >
                   <div className="post-image-wrapper-inner">
@@ -163,7 +163,7 @@ function AboutCreator() {
                 </a>
               </div>
               <div className="users-post">
-                <a href="https://pickupnyc.herokuapp.com/" target="blank">
+                <a href="" target="blank">
                   <div className="post-image-wrapper-inner">
                     <p className="profile-card-text">Pickup</p>
                     <img
@@ -175,7 +175,7 @@ function AboutCreator() {
                 </a>
               </div>
               <div className="users-post">
-                <a href="https://speak-easy-tx.herokuapp.com/" target="blank">
+                <a href="" target="blank">
                   <div className="post-image-wrapper-inner">
                     <p className="profile-card-text">Speakeasy</p>
                     <img

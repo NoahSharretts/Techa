@@ -1,1 +1,141 @@
+.profile-page .profile-page-header .user-data-wrapper {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+}
 
+.profile-page .profile-page-header .user-data-wrapper .username {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-page .profile-page-header .user-data-wrapper .username span {
+  flex: 0 0 auto;
+}
+.profile-page .profile-page-header .user-data-wrapper .bio {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-page .profile-page-header .user-data-wrapper .bio span {
+  flex: 1 1 auto;
+}
+
+.user-posts-wrapper-outer {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-posts-wrapper-outer .section-selector {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.user-posts-wrapper-outer .section-selector .section-selector-button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  color: rgb(142, 142, 142);
+  justify-content: center;
+}
+
+.user-posts-wrapper-outer
+  .section-selector
+  .section-selector-button
+  > *:first-child {
+  margin-right: 5px;
+}
+
+.user-posts-wrapper-outer
+  .section-selector
+  .section-selector-button
+  .svg-wrapper {
+  width: 24px;
+  height: 100%;
+}
+
+.user-posts-wrapper-outer .section-selector .section-selector-button span {
+  font-size: 11px;
+  font-family: "Inter", sans-serif;
+}
+
+.profile-page .user-posts-wrapper {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.users-posts {
+  width: 293px;
+  height: 293px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-posts .post-image-wrapper-inner {
+  width: 400px;
+  height: 293px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-image-wrapper-inner{
+    position: relative;
+
+}
+
+.post-image-profile-page {
+  object-fit: fill;
+  height: 100%;
+  width: auto;
+  cursor: pointer;
+}
+
+.post-image-wrapper-inner:hover .post-image-profile-page{
+    opacity: 0.7;
+    /* filter: alpha(opacity=70);  */
+    background-color: #000;
+    color: black;
+    font-size: 25px;
+
+}
+
+.post-image-wrapper-inner:hover {
+    background-color: black;
+}
+
+.post-image-wrapper-inner:hover .profile-card-text {
+    color: white;
+    opacity: 2;
+    z-index: 3;
+    font-weight: 700;
+}
+
+.profile-card-text{
+    /* text-align: center; */
+    z-index: 2;
+    transform: translateX(170px);
+    color: transparent;
+    position: absolute;
+    top: 25;
+    bottom: 25;
+    left: 0;
+    right:0;
+    width: fit-content;
+    height: fit-content;
+
+}

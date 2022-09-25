@@ -11,26 +11,95 @@ import ProfilePostModal from '../PostModal/profilePostModal';
 function ProfilePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const sessionUser = useSelector(state => state.session.user);
   const user = useSelector((state) => state.users);
   const posts = useSelector((state) => state.userPosts)
-
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [follow, setFollow] = useState(0);
 
   useEffect( () => {
     dispatch(getOneUser(id))
     dispatch(getUserPosts(id))
+    setIsLoaded(true)
   },[ id, dispatch ]);
 
+  console.log(user, 'user')
+
+  const isFollowed = () => {
+    const follows = user?.followers;
+    if (follows) {
+      for (let i = 0; i < follows.length; i++) {
+        let follow = follows[i];
+        if (follow.id === sessionUser?.id) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const createFollow = async (e) => {
+    e.preventDefault();
+    const payload = {
+      followerId: user.id,
+      followingId: sessionUser.id,
+    };
+
+    // await dispatch(followUser(payload, sessionUser.id));
+    // await dispatch(getOneUser(id));
+    // setFollow(follow + 1)
+  };
+
+  const deleteFollow = async () => {
+    const bool = await dispatch(unfollowUser(user?.id, sessionUser.id));
+    if (bool) {
+      setFollow(follow - 1);
+    }
+    // await dispatch(getOneUser(id));
+  };
 
   return (
     <div className='profile-page'>
+      {isLoaded && (
       <div className='profile-page-wrapper'>
         <div className='profile-page-header'>
           <div className='avatar-wrapper'>
-            <img src={ user.avatar } />
+            <img src={ user?.avatar } />
           </div>
           <div className='user-data-wrapper'>
             <div className='username-wrapper'>
-              <h2>{ user.username }</h2>
+              <h2 className='username'>{ user?.username }</h2>
+              {sessionUser?.id !== user?.id && (
+                <>
+                  {!isFollowed() ? (
+                    <button className="followButton" onClick={createFollow}>
+                      Follow
+                    </button>
+                  ) : (
+                    <button onClick={deleteFollow} className="unfollowButton">
+                      <img
+                        src={
+                          "https://img.icons8.com/material-sharp/24/000000/checked-user-male.png"
+                        }
+                        alt=""
+                      ></img>
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
+            <div className="bio">
+                <span>{user?.bio}</span>
+            </div>
+            <div>
+              <span className="bio-formatting">
+                {posts?.length} {posts?.length === 1 ? "post" : "posts"}
+              </span>
+              <span className="bio-formatting">
+                {/* {`${user?.followers.length}`}
+                {user?.followers.length === 1 ? " follower" : " followers"} */}
+              </span>
+              {/* <span className="bio-formatting">{`${user?.following.length} following`}</span> */}
             </div>
           </div>
         </div>
@@ -115,6 +184,7 @@ function ProfilePage() {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 
