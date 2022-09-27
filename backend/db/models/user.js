@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     };
     static associate(models) {
-      User.hasMany(models.Friend, { foreignKey: 'followerId', as: 'userFollowing' });
+      User.hasMany(models.Friend, { foreignKey: 'followingId', as: 'userFollowing' });
       User.hasMany(models.Friend, { foreignKey: 'userId', as: 'Followers' });
       User.hasMany(models.Like, { foreignKey: 'userId' });
       User.hasMany(models.Post, { foreignKey: 'userId' });

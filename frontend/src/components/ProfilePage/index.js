@@ -5,7 +5,7 @@ import { useParams, } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneUser } from '../../store/users'
 import { getUserPosts } from '../../store/profilePage'
-import { findFollows, followUser, unfollowUser } from '../../store/follow';
+import { findFriends, followUser, unfollowUser } from '../../store/follow';
 import ProfilePostModal from '../PostModal/profilePostModal';
 
 function ProfilePage() {
@@ -14,23 +14,24 @@ function ProfilePage() {
   const sessionUser = useSelector(state => state.session.user);
   const user = useSelector((state) => state.users);
   const posts = useSelector((state) => state.userPosts)
+  const friends = useSelector(state => state.friends)
   const [isLoaded, setIsLoaded] = useState(false);
-  const [follow, setFollow] = useState(0);
 
   useEffect( () => {
     dispatch(getOneUser(id))
+    dispatch(findFriends(id))
     dispatch(getUserPosts(id))
     setIsLoaded(true)
-  },[ id, dispatch ]);
+  },[ dispatch ]);
 
-  console.log(user, 'user')
+  console.log(friends.following, 'friends')
 
   const isFollowed = () => {
-    const follows = user?.followers;
+    const follows = friends?.followers;
     if (follows) {
       for (let i = 0; i < follows.length; i++) {
         let follow = follows[i];
-        if (follow.id === sessionUser?.id) {
+        if (follow.userId === sessionUser?.id) {
           return true;
         }
       }
@@ -38,24 +39,10 @@ function ProfilePage() {
     return false;
   };
 
-  const createFollow = async (e) => {
+  const follow = async (e) => {
     e.preventDefault();
-    const payload = {
-      followerId: user.id,
-      followingId: sessionUser.id,
-    };
-
-    // await dispatch(followUser(payload, sessionUser.id));
-    // await dispatch(getOneUser(id));
-    // setFollow(follow + 1)
-  };
-
-  const deleteFollow = async () => {
-    const bool = await dispatch(unfollowUser(user?.id, sessionUser.id));
-    if (bool) {
-      setFollow(follow - 1);
-    }
-    // await dispatch(getOneUser(id));
+    await dispatch(followUser(user.id));
+    await dispatch(findFriends(id));
   };
 
   return (
@@ -72,11 +59,11 @@ function ProfilePage() {
               {sessionUser?.id !== user?.id && (
                 <>
                   {!isFollowed() ? (
-                    <button className="followButton" onClick={createFollow}>
+                    <button className="followButton" onClick={follow}>
                       Follow
                     </button>
                   ) : (
-                    <button onClick={deleteFollow} className="unfollowButton">
+                    <button onClick={follow} className="unfollowButton">
                       <img
                         src={
                           "https://img.icons8.com/material-sharp/24/000000/checked-user-male.png"
@@ -93,13 +80,13 @@ function ProfilePage() {
             </div>
             <div>
               <span className="bio-formatting">
-                {posts?.length} {posts?.length === 1 ? "post" : "posts"}
+                {Object.values(posts)?.length} {posts?.length === 1 ? "post" : "posts"}
               </span>
               <span className="bio-formatting">
-                {/* {`${user?.followers.length}`}
-                {user?.followers.length === 1 ? " follower" : " followers"} */}
+                {`${friends?.followers?.length}`}
+                {friends?.followers?.length === 1 ? " follower" : " followers"}
               </span>
-              {/* <span className="bio-formatting">{`${user?.following.length} following`}</span> */}
+              <span className="bio-formatting">{`${friends?.following?.length} following`}</span>
             </div>
           </div>
         </div>

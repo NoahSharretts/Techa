@@ -73,7 +73,7 @@ function Navigation({ isLoaded }){
                           <img
                             className="search-profile-image"
                             alt=""
-                            src={res.avatar}
+                            src={res?.avatar}
                           />
                         }
                         {<span className="searchUsername">{res.username}</span>}

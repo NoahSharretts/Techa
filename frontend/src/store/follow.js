@@ -3,17 +3,17 @@ import { csrfFetch } from "./csrf";
 const LOAD_FOLLOWS = 'LOAD_FOLLOWS'
 
 
-const getFollows = (users, userId) => ({
+const getFollows = (users) => ({
   type: LOAD_FOLLOWS,
-  payload: users, userId
+  payload: users
 });
 
-export const findFollows = (userId) => async dispatch => {
+export const findFriends = (userId) => async dispatch => {
   const response = await csrfFetch(`/api/follows/${userId}`)
 
   if (response.ok) {
     const data = await response.json()
-    dispatch(getFollows(data, userId))
+    dispatch(getFollows(data))
   }
 }
 
@@ -52,7 +52,7 @@ const intialState = {}
 const followReducer = (state = intialState, action) => {
   switch(action.type) {
     case LOAD_FOLLOWS: {
-      return { ...state, [action.userId]: action.payload }
+      return { ...action.payload }
     }
     default:
       return state;
