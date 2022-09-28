@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { setTokenCookie, restoreUser, requireAuth} = require("../../utils/auth");
-const { User, Post, Topic, Like, Comment } = require("../../db/models");
+const {  Like } = require("../../db/models");
 
 const router = express.Router();
 

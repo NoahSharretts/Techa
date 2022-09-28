@@ -27,24 +27,10 @@ export const followUser = (userId) => async dispatch => {
 
   if (response.ok) {
     const data = await response.json()
-    dispatch(getFollows(data, userId))
+    dispatch(getFollows(data))
   }
 }
 
-
-export const unfollowUser = (userId) => async dispatch => {
-  const response = await csrfFetch(`/api/follows/${userId}`, {
-    method: "DELETE",
-    headers : {
-      "Content-Type": "application/json"
-    },
-  })
-
-  if (response.ok) {
-    const data = await response.json()
-    dispatch(getFollows(data, userId))
-  }
-}
 
 
 const intialState = {}

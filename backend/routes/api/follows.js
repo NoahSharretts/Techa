@@ -30,6 +30,12 @@ router.post('/:id(\\d+)',
     const followingId = req.params.id;
     const userId = req.user.dataValues.id;
 
+    const followers = await Friend.findAll({
+      where: {
+        followingId: userId
+      }
+    })
+
     const following = await Friend.findOne({
       where: {
         userId: userId,
@@ -40,15 +46,14 @@ router.post('/:id(\\d+)',
     if (following) {
       await following.destroy();
       res.status(200)
-      res.json()
+      res.json({followers})
     } else {
       const follow = await Friend.create({
         userId,
         followingId
       })
-      likesCount++
       res.status(200)
-      res.json()
+      res.json({followers})
     }
   })
 )

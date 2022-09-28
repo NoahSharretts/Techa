@@ -50,7 +50,7 @@ function App() {
             <AboutCreator />
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
     </>
   );
 }
