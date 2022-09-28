@@ -48,6 +48,7 @@ export const getPostComments = (postId) => async dispatch => {
 
   if (response.ok) {
     const comments = await response.json();
+    console.log(comments, 'comments')
     dispatch(load_post_comments(comments))
   }
 }
@@ -110,15 +111,15 @@ const commentReducer = (state = intialState, action) => {
       return newState;
     }
     case ADD_COMMENT: {
-      let newState = Object.assign({}, state);
-      let newComment = action.payload;
-      newState[newComment.id] = newComment;
-      return newState;
+      let tempState = Object.assign({}, state);
+      let newState = Object.values(tempState)
+      newState.unshift(action.payload)
+      return newState
     }
     case LOAD_POST_COMMENTS: {
       let newState = {}
-      action.payload.forEach(comment => {
-        newState[comment.id] = comment
+      action.payload.forEach((comment, i) => {
+        newState[i] = comment
       });
       return newState;
     }

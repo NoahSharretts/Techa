@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const { check, validationResult } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser, requireAuth} = require("../../utils/auth");
-const { User, Post, Topic, Like, Comment } = require("../../db/models");
+const { User, Post, Topic, Like, Comment, sequelize } = require("../../db/models");
 const { singlePublicFileUpload }  = require("../../awsS3");
 const { singleMulterUpload } = require("../../awsS3");
 
@@ -44,13 +44,14 @@ router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
     where: {
       postId: postId
     },
-    order: [
-      ["updatedAt", "DESC"]
-    ],
     include: [
       User,
     ],
+    order: [
+      ['updatedAt', 'DESC']
+    ]
   })
+  console.log(comment,'w23wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww')
   return res.json(comment)
 }))
 

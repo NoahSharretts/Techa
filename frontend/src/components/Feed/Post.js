@@ -1,5 +1,4 @@
 import './Post.css'
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPosts } from '../../store/post'
@@ -8,7 +7,6 @@ import PostModal from '../PostModal';
 import CommentModal from '../PostModal/commentExpand';
 import CommentTwoModal from '../PostModal/commentExpandTwo';
 import CreateComment from '../CreateComment/CreateComment';
-import { getComments, createComment, deleteComment } from '../../store/comment'
 
 
 function Post({ post }) {
