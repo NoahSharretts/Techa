@@ -44,9 +44,12 @@ router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
     where: {
       postId: postId
     },
+    order: [
+      ["updatedAt", "DESC"]
+    ],
     include: [
       User,
-    ]
+    ],
   })
   return res.json(comment)
 }))

@@ -41,7 +41,7 @@ function Navigation({ isLoaded }){
 
   return (
     <>
-      {sessionUser && (
+      {sessionUser && isLoaded && (
         <div className='nav-wrapper'>
           <div className='nav'>
             <div className='logo-wrapper'>

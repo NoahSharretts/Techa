@@ -64,10 +64,10 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete(
-      'Comments', 
-      null, 
+      'Comments',
+      null,
       {
-        truncate: true, cascade: true, restartIdentity: true 
+        truncate: true, cascade: true, restartIdentity: true
       }
     );
   }

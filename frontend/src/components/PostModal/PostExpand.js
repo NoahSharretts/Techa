@@ -17,7 +17,6 @@ function CreatePostForm({ setShowForm, post }) {
   const users = useSelector((state) => state.users)
   const comments = useSelector((state) => state.comments);
 
-  console.log(comments)
 
   useEffect(() => {
     dispatch(getPostComments(post.id));
@@ -70,11 +69,11 @@ function CreatePostForm({ setShowForm, post }) {
           </div>
             {Object.values(comments).map(comment =>
               <div className='commentBox' key={comment.id}>
-
                   <div className='comment' >
                     <div id='avatarComment'>
                       <img id='avatarImgComment' src={ users[comment.userId]?.avatar} />
                       <Link to={`/users/${post.userId}`}>{users[comment.userId]?.username}</Link>
+                      <h4>{comment.updatedAt}</h4>
                     </div>
                     <p id='commentBody'>{comment.body}</p>
                     <div className='deleteButton'>
@@ -87,7 +86,6 @@ function CreatePostForm({ setShowForm, post }) {
                       }
                     </div>
                   </div>
-
               </div>
             )}
           </div>

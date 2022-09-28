@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch,  } from 'react-redux';
 import { useSelector } from "react-redux";
-// import { useHistory, } from 'react-router-dom'
 import { allUsers } from "../../store/users";
-import { createComment, getComments } from '../../store/comment';
+import { createComment } from '../../store/comment';
 import { getPosts } from "../../store/post";
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -14,9 +13,7 @@ function CreateComment({  post }) {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(getComments());
     dispatch(allUsers())
-    dispatch(getPosts())
   }, [dispatch])
 
   const formik = useFormik({
@@ -31,6 +28,7 @@ function CreateComment({  post }) {
     }),
     onSubmit: async (values) => {
       dispatch(createComment(values))
+      dispatch(getPosts())
       formik.values.body = "";
     },
   });
