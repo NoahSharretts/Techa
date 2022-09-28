@@ -17,7 +17,7 @@ function AboutCreator() {
             <div className="avatar-wrapper">
               <img
                 src={
-                  "https://media-exp1.licdn.com/dms/image/D4E35AQGNfI5D1F0s9w/profile-framedphoto-shrink_200_200/0/1638499476020?e=1664672400&v=beta&t=expsQHM-BIQnYQZf7-0k_J18ReRZMGSe2hiOKf7gYtA"
+                  "https://i.imgur.com/PHwikvO.jpg"
                 }
                 alt=""
               />
@@ -30,8 +30,8 @@ function AboutCreator() {
                 <span>Website Creator</span>
               </div>
               <p>
-                I'm a software engineer based in San Francisco Bay Area. I have a
-                background in customer service.
+                I am an aspiring software engineer based in San Francisco Bay Area. My background is
+                sales experience, customer focus and customer care.
               </p>
             </div>
           </div>
@@ -108,9 +108,9 @@ function AboutCreator() {
               </div>
             </div>
             <div className="user-posts-wrapper">
-              <div className="users-post">
+              <div className="users-posts">
                 <a
-                  href=""
+                  href="https://www.linkedin.com/in/noah-garcia-sharretts-7ab735208/"
                   target="blank"
                 >
                   <div className="post-image-wrapper-inner">
@@ -123,8 +123,8 @@ function AboutCreator() {
                   </div>
                 </a>
               </div>
-              <div className="users-post">
-                <a href="" target="blank">
+              <div className="users-posts">
+                <a href="https://github.com/NoahSharretts" target="blank">
                   <div className="post-image-wrapper-inner">
                     <p className="profile-card-text">Github</p>
                     <img
@@ -135,52 +135,40 @@ function AboutCreator() {
                   </div>
                 </a>
               </div>
-              <div className="users-post">
-                <a href="" target="blank">
-                  <div className="post-image-wrapper-inner">
-                    <p className="profile-card-text">AngelList</p>
-                    <img
-                      className="post-image-profile-page"
-                      src="https://cdn-images-1.medium.com/max/1200/1*VHYE96X8zKxswXKFcar-Uw.png"
-                      alt=""
-                    ></img>
-                  </div>
-                </a>
-              </div>
-              <div className="users-post">
+              <div className="users-posts">
                 <a
-                  href=""
+                  href="https://ignored-group4.herokuapp.com/"
                   target="blank"
                 >
                   <div className="post-image-wrapper-inner">
-                    <p className="profile-card-text">RTC</p>
+                    <p className="profile-card-text">Ignored</p>
                     <img
                       className="post-image-profile-page"
-                      src="https://res.cloudinary.com/dis83syog/image/upload/v1639097471/Personal%20Portfolio/Screen_Shot_2021-12-09_at_7.50.25_PM_upbwjm.png"
+                      src="https://i.imgur.com/zPJpDxh.png"
                       alt=""
                     ></img>
                   </div>
                 </a>
               </div>
-              <div className="users-post">
-                <a href="" target="blank">
+              <div className="users-posts">
+                <a href="https://codium-app.herokuapp.com/" target="blank">
                   <div className="post-image-wrapper-inner">
-                    <p className="profile-card-text">Pickup</p>
+                    <p className="profile-card-text">Codium</p>
                     <img
                       className="post-image-profile-page"
-                      src="https://res.cloudinary.com/dis83syog/image/upload/v1638663008/Personal%20Portfolio/Screen_Shot_2021-12-04_at_7.09.55_PM_xtclmg.png"
+                      src="https://i.imgur.com/OOumqEO.png"
                       alt=""
                     ></img>
                   </div>
                 </a>
               </div>
-              <div className="users-post">
-                <a href="" target="blank">
+              <div className="users-posts">
+                <a href="https://noahsharretts.github.io/" target="blank">
                   <div className="post-image-wrapper-inner">
-                    <p className="profile-card-text">Speakeasy</p>
+                    <p className="profile-card-text">Portfolio</p>
                     <img
                       className="post-image-profile-page"
-                      src="https://res.cloudinary.com/dis83syog/image/upload/v1638664346/Personal%20Portfolio/Screen_Shot_2021-12-04_at_7.32.10_PM_zxiugu.png"
+                      src="https://i.imgur.com/hyNHZh5.png"
                       alt=""
                     ></img>
                   </div>

@@ -32,7 +32,7 @@
 
 .profile-page .profile-page-header .avatar-wrapper img {
   height: 100%;
-  object-fit: fill;
+  width: 100%;
 }
 
 .user-posts-wrapper-outer {
@@ -132,7 +132,7 @@
   width: 100px;
 }
 
-.profile-page .profile-page-header .user-data-wrapper .username span {
+.profile-page .profile-page-header .user-data-wrapper .username-wrapper span {
   flex: 0 0 auto;
 }
 .profile-page .profile-page-header .user-data-wrapper .bio {

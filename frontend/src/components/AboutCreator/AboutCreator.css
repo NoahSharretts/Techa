@@ -4,14 +4,14 @@
   flex-direction: column;
 }
 
-.profile-page .profile-page-header .user-data-wrapper .username {
+.profile-page .profile-page-header .user-data-wrapper .username-wrapper {
   flex: 1 1 auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.profile-page .profile-page-header .user-data-wrapper .username span {
+.profile-page .profile-page-header .user-data-wrapper .username-wrapper span {
   flex: 0 0 auto;
 }
 .profile-page .profile-page-header .user-data-wrapper .bio {
@@ -86,11 +86,13 @@
 }
 
 .users-posts .post-image-wrapper-inner {
-  width: 400px;
   height: 293px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.users-posts .post-image-wrapper-inner {
+  width: 400px;
 }
 
 .post-image-wrapper-inner{
@@ -138,4 +140,8 @@
     width: fit-content;
     height: fit-content;
 
+}
+
+.username-wrapper {
+  font-size: 26px;
 }

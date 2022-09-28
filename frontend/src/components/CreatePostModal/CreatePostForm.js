@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector  } from 'react-redux';
 
 import { createPost, getPosts } from '../../store/post'
@@ -9,11 +9,6 @@ function CreatePostForm({ setShowForm }) {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
   const [imagePreview, setImagePreview] = useState(null)
-
-  // const handleCancel = (e) => {
-  //   e.preventDefault();
-  //   setShowForm(false);
-  // }
 
   const formik = useFormik({
     initialValues: {
