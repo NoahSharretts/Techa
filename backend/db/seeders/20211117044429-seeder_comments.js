@@ -21,43 +21,6 @@ for(let i = 0; i <= 200; i++) {
 module.exports = {
   up: async (queryInterface, Sequelize) => {
    await queryInterface.bulkInsert('Comments', comments, [
-
-    // {
-    //   userId: 1,
-    //   body: "",
-    //   postId: 1,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },
-    // {
-    //   userId: 2,
-    //   body: "",
-    //   postId: 2,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },
-    // {
-    //   userId: 3,
-    //   body: "",
-    //   postId: 3,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },
-    // {
-    //   userId: 3,
-    //   body: "",
-    //   postId: 4,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },
-    // {
-    //   userId: 3,
-    //   body: "",
-    //   postId: 5,
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    // },
-
    ], {});
 
   },

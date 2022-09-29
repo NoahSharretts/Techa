@@ -34,6 +34,9 @@ router.get('/', asyncHandler( async(req, res, next) => {
       User,
       Comment,
       Like
+    ],
+    order: [
+      ['updatedAt', 'ASC']
     ]
   });
   return res.json(post)
@@ -57,7 +60,10 @@ router.get('/user/:id(\\d+)', asyncHandler( async(req, res, next) => {
   const posts = await Post.findAll({
     where: {
       userId: userId
-    }
+    },
+    order: [
+      ['updatedAt', 'DESC']
+    ]
   })
   return res.json(posts)
 }))

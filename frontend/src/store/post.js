@@ -117,8 +117,8 @@ const postReducer = (state = intialState, action) => {
   switch(action.type) {
     case LOAD_ALL: {
       let newState = Object.assign({}, state);
-      action.payload.forEach(post => {
-        newState[post.id] = post
+      action.payload.forEach((post, i) => {
+        newState[i] = post
       });
       return newState;
     }

@@ -23,8 +23,8 @@ const profilePageReducer = (state = intialState, action) => {
   switch(action.type) {
     case LOAD_USER_POSTS: {
       let newState = {};
-      action.payload.forEach(post => {
-        newState[post.id] = post
+      action.payload.forEach((post, i) => {
+        newState[i] = post
       });
       return newState;
     }

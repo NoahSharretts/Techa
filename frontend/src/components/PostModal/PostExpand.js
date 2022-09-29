@@ -1,11 +1,10 @@
 import './postExpand.css';
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useHistory, } from 'react-router-dom'
 import { allUsers } from "../../store/users";
 import { deletePost } from '../../store/post';
-import { getComments, deleteComment, getPostComments } from '../../store/comment'
+import { deleteComment, getPostComments } from '../../store/comment'
 import EditPostModal from '../EditPostModal'
 import EditCommentModal from '../EditCommentModal';
 import CreateComment from '../CreateComment/CreateComment';
@@ -23,18 +22,14 @@ function CreatePostForm({ setShowForm, post }) {
     dispatch(allUsers())
   }, [dispatch])
 
-  const handleDelete = (e) => {
-    dispatch(deletePost(e.target.value))
+  const handleDelete = () => {
+    dispatch(deletePost(post.id))
+    // dispatch()
+    setShowForm(false)
   }
 
   const handleCommentDelete = (e) => {
     dispatch(deleteComment(e.target.value))
-  }
-
-
-  const handleCancel = (e) => {
-    e.preventDefault();
-    setShowForm(false);
   }
 
   return (
@@ -52,7 +47,22 @@ function CreatePostForm({ setShowForm, post }) {
             {(post.userId === user.id)?
               <div>
                 <EditPostModal post={post}/>
-                <button onClick={handleDelete} value={post.id}>Delete</button>
+                <svg
+                      onClick={handleDelete}
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      height="1em"
+                      width="1em"
+                      tyle={{ transform: "rotate(360deg)" }}
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
               </div> : null
             }
           </div>
@@ -73,14 +83,28 @@ function CreatePostForm({ setShowForm, post }) {
                     <div id='avatarComment'>
                       <img id='avatarImgComment' src={ users[comment.userId]?.avatar} />
                       <Link to={`/users/${post.userId}`}>{users[comment.userId]?.username}</Link>
-                      <h4>{comment.updatedAt}</h4>
                     </div>
                     <p id='commentBody'>{comment.body}</p>
                     <div className='deleteButton'>
                       { comment.userId === user.id && (
                         <div className='ownerButtons'>
                           <EditCommentModal comment={comment} />
-                          <button value={comment.id} onClick={handleCommentDelete}>Del</button>
+                          <svg
+                            onClick={handleCommentDelete}
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            height="1em"
+                            width="1em"
+                            tyle={{ transform: "rotate(360deg)" }}
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
                         </div>
                       )
                       }
