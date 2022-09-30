@@ -1,4 +1,4 @@
-// CreateUser.js file
+
 import './CreateUser.css';
 import { useState } from "react";
 import { createUser } from '../../store/session';

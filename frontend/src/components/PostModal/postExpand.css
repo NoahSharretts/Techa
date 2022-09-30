@@ -129,3 +129,9 @@
   width: auto;
   cursor: pointer;
 }
+
+.avatar-div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}

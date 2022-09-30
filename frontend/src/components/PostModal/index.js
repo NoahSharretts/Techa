@@ -13,6 +13,7 @@ function PostModal({ post }) {
       <img
         src={post.photo}
         id='post-photo'
+        alt=""
         onClick={() => setShowForm(true)} >
       </img>
 

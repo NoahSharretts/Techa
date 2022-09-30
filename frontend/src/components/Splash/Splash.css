@@ -88,3 +88,27 @@
   cursor: pointer;
 }
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: grey;
+  padding: 32px 0;
+  background-color: rgb(250 250 250);
+}
+
+.footer a img {
+  width: 100%;
+  height: 20px;
+}
+
+.social-links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons{
+  margin-left: 8px;
+}

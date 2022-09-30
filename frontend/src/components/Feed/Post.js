@@ -52,7 +52,7 @@ function Post({ post }) {
   return (
     <div className='post'>
       <div className='post-header'>
-        <img id='avatarImg' src={ post?.User?.avatar} />
+        <img id='avatarImg' src={ post?.User?.avatar} alt="" />
         <Link className='username-link' to={`/users/${post.userId}`}>
           { post?.User?.username }
         </Link>

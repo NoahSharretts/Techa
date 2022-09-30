@@ -46,7 +46,7 @@ function Navigation({ isLoaded }){
           <div className='nav'>
             <div className='logo-wrapper'>
               <NavLink to="/">
-                <img className='logo' src='https://i.imgur.com/KrRwLMe.png' />
+                <img className='logo' src='https://i.imgur.com/KrRwLMe.png' alt="" />
               </NavLink>
             </div>
             <div className='search-bar'>

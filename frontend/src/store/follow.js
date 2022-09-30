@@ -2,7 +2,6 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_FOLLOWS = 'LOAD_FOLLOWS'
 
-
 const getFollows = (users) => ({
   type: LOAD_FOLLOWS,
   payload: users
@@ -30,8 +29,6 @@ export const followUser = (userId) => async dispatch => {
     dispatch(getFollows(data))
   }
 }
-
-
 
 const intialState = {}
 

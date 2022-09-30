@@ -1,27 +1,26 @@
-import { useState } from "react";
+
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom'
 import { updatePost, getPosts } from '../../store/post'
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 function EditPostForm({ setShowForm, post }) {
   const dispatch = useDispatch();
-  const histroy = useHistory();
+
   const userId = useSelector((state) => state.session.user.id)
-  
+
   const formik = useFormik({
     initialValues: {
       id: post.id,
       body: post.body,
       userId
-      
+
     },
     validationSchema: yup.object({
       body: yup.string().min(5).max(350).required('Comment must be be between 5 and 350 characters'),
     }),
     onSubmit: async (values) => {
-      dispatch(updatePost(values)).then(() => 
+      dispatch(updatePost(values)).then(() =>
       dispatch(getPosts())
       )
       setShowForm(false);
@@ -40,12 +39,12 @@ function EditPostForm({ setShowForm, post }) {
         <div className='postForm'>
           <div>
             <label htmlFor='body'>Your description here</label>
-            <textarea 
-              id='body' 
+            <textarea
+              id='body'
               name='body'
-              type='text' 
-              onChange={formik.handleChange} 
-              value={formik.values.body} 
+              type='text'
+              onChange={formik.handleChange}
+              value={formik.values.body}
               onBlur={formik.handleBlur}
             />
              {formik.touched.body && formik.errors.body ? (

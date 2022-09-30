@@ -5,7 +5,7 @@ import { useParams, } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneUser } from '../../store/users'
 import { getUserPosts } from '../../store/profilePage'
-import { findFriends, followUser, unfollowUser } from '../../store/follow';
+import { findFriends, followUser } from '../../store/follow';
 import ProfilePostModal from '../PostModal/profilePostModal';
 
 function ProfilePage() {
@@ -22,9 +22,7 @@ function ProfilePage() {
     dispatch(findFriends(id))
     dispatch(getUserPosts(id))
     setIsLoaded(true)
-  },[ dispatch ]);
-
-  console.log(friends.following, 'friends')
+  },[ dispatch, id ]);
 
   const isFollowed = () => {
     const follows = friends?.followers;
@@ -51,7 +49,7 @@ function ProfilePage() {
       <div className='profile-page-wrapper'>
         <div className='profile-page-header'>
           <div className='avatar-wrapper'>
-            <img src={ user?.avatar } />
+            <img src={ user?.avatar } alt="" />
           </div>
           <div className='user-data-wrapper'>
             <div className='username-wrapper'>

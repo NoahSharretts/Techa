@@ -1,7 +1,7 @@
 import './Post.css';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { getPosts, deletePost, getPostById } from '../../store/post'
+import { getPosts } from '../../store/post'
 import Post from './Post';
 
 function Feed() {
@@ -13,7 +13,7 @@ function Feed() {
     dispatch(getPosts());
   }, [dispatch])
 
-  
+
   return (
     <div className='feedContainer'>
       {Object.values(posts).map((post) => (
