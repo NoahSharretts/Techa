@@ -25,10 +25,10 @@ function Splash() {
   };
 
   const handleDemo = () => {
-    setCredential("Dmo")
-    setPassword("password")
 
-    return dispatch(sessionActions.login({ credential, password }))
+    dispatch(sessionActions.login({ credential: "Dmo", password: "password" }))
+
+    return
   }
 
   return (
