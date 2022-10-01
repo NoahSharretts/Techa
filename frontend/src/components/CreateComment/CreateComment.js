@@ -36,25 +36,23 @@ function CreateComment({  post }) {
   return (
     <div className='comment-form-container'>
       <form onSubmit={formik.handleSubmit}>
-        <div className='comment-input-wrapper'>
-          <div>
-            <input
-              id='body'
-              placeholder='Add a comment...'
-              name='body'
-              type='text'
-              onChange={formik.handleChange}
-              value={formik.values.body}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.body && formik.errors.body ? (
-              <div className="errorText">{formik.errors.body}</div>
-            ) : null}
-          </div>
-          <div className="comment-btn-wrapper">
+        <span className='fieldDiv'>
+          <input
+            id='comment-input'
+            placeholder='Add a comment...'
+            name='body'
+            type='text'
+            onChange={formik.handleChange}
+            value={formik.values.body}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.body && formik.errors.body ? (
+            <div className="errorText">{formik.errors.body}</div>
+          ) : null}
+        </span>
+          <span className="comment-btn-wrapper">
             <button id='submit-comment-btn' type="submit">Post</button>
-          </div>
-        </div>
+          </span>
       </form>
     </div>
   )

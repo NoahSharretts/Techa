@@ -12,6 +12,7 @@ const CreateUser = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [errors, setErrors] = useState([]);
+  const [inputLength, setInputLength] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
@@ -38,6 +39,8 @@ const CreateUser = () => {
           }
         });
     }
+
+    setInputLength(false);
 
     return setErrors([
       "Confrim Passworf field must be the same as the Password field"
@@ -99,17 +102,30 @@ const CreateUser = () => {
                 required
               />
               <input
-                className="signUpFormInput"
+                className="signup-form-input"
                 type="password"
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
-              <label>
-                Profile Picture
-                <input type="file" name="avatar" onChange={updateFile} />
-              </label>
+              <div className='profile-img-input-wrapper'>
+                <label className='profile-img-input-label'>
+                  Profile Picture
+                  <input
+                    className='profile-img-input'
+                    type="file"
+                    name="avatar"
+                    onChange={(e) => {
+                      if (e.currentTarget.files.length) {
+                        setInputLength(true);
+                      }
+                      updateFile(e);
+                    }}
+                  />
+                </label>
+                { inputLength && <i className="far fa-check-circle check"></i> }
+              </div>
               <button className='signup-btn' type="submit">Sign Up!</button>
               <button className='signup-btn' type='submit' onClick={handleDemo}>Demo User</button>
             </form>
