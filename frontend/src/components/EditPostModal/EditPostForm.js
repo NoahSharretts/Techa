@@ -41,7 +41,7 @@ function EditPostForm({ setShowForm, post }) {
         </div>
         <form className='edit-post-form' onSubmit={formik.handleSubmit}>
           <div className='fieldDiv'>
-            <div>
+            <div>``
               <textarea
                 id='body'
                 name='body'
