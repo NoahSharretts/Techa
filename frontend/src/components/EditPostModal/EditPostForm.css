@@ -1,0 +1,46 @@
+.edit-post-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
+}
+
+.edit-post-header {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  padding: 12px;
+}
+
+.edit-post-title {
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
+
+.close-modal {
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.edit-post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+}
+
+.edit-post-submit-btn{
+  cursor: pointer;
+  display: block;
+  padding: 8px 12px;
+  background-color: #0095f6;
+  border-radius: 3px;
+  color: white;
+  margin-bottom: 24px;
+  font-weight: 600;
+  width: 200px;
+}
