@@ -4,6 +4,31 @@
   max-height: 600px;
 }
 
+.left-container {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+}
+
+.post-body {
+  word-break: break-word;
+}
+
+.post-user {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.owner-buttons {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.usernameComment {
+  font-weight: 500;
+}
+
 .post-photo-wrapper {
   max-width: 600px;
 }
@@ -15,29 +40,22 @@
   width: fit-content;
 }
 
-
-
 .commentsContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 325px;
+  width: 450px;
   height: 600px;
 
 }
 
-.ownerButtons {
+.comment-header {
+  width: 100%;
   display: flex;
-
-}
-
-
-
-#avatarComment{
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  overflow-wrap: break-word;
-
+  border-bottom: 1px solid lightgray;
+  padding: 14px 16px;
 }
 
 .comment-scroll {
@@ -48,16 +66,6 @@
   flex-grow: 1;
 }
 
-#commentBody {
-  width: auto;
-  overflow: visible;
-  padding: 6px;
-  height: 100px;
-  border: 1px solid black;
-  overflow-wrap: break-word;
-
-}
-
 .commentInputContainer {
   width: 225px;
   bottom: 0;
@@ -65,24 +73,47 @@
 }
 
 .comment {
-  height: fit-content;
-  overflow-wrap: break-word;
-
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
 }
 
-.commentBox {
-  height: fit-content;
-  width: fit-content;
+.comment-wrapper {
+  width: 100%;
+  padding: 16px;
+}
+
+.comment-content {
+  display: grid;
+  grid-template-areas:
+    "username buttons"
+    "comment buttons";
+}
+
+.comment-username {
+  font-size: 14px;
+  font-weight: 600;
+  grid-area: username;
+}
+
+.comment-text {
+  overflow: auto;
+  font-size: 14px;
+  grid-area: comment;
+  overflow-wrap: break-word;
+}
+
+.buttons-wrapper {
+  grid-area: buttons;
+  display: flex;
 }
 
 #avatarImgComment{
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-}
-
-#usernameComment{
- font-weight: bolder;
+  margin-right: 16px;
 }
 
 .last-comment-wrapper {
