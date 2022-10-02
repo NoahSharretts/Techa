@@ -48,7 +48,6 @@ export const getPostComments = (postId) => async dispatch => {
 
   if (response.ok) {
     const comments = await response.json();
-    console.log(comments, 'comments')
     dispatch(load_post_comments(comments))
   }
 }
@@ -69,7 +68,7 @@ export const createComment = payload => async dispatch => {
 }
 
 export const updateComment = payload => async dispatch => {
-  console.log(payload, 'payload')
+
   const response = await csrfFetch(`/api/comments/${payload.id}`, {
     method: 'PUT',
     headers: {

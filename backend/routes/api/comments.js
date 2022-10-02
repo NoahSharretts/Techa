@@ -51,13 +51,12 @@ router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
       ['updatedAt', 'DESC']
     ]
   })
-  console.log(comment,'w23wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww')
+
   return res.json(comment)
 }))
 
 // POST: create comment
 router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
-
 
   const comment = await Comment.create(req.body)
 
@@ -68,7 +67,6 @@ router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
 router.put('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
   const {id} = req.body
   const comment = await Comment.findByPk(id)
-  console.log(req.body, '================================')
   comment.update(req.body)
 
   return res.json(comment)

@@ -31,7 +31,7 @@ export const restoreUser = () => async dispatch => {
 
 export const createUser = (user) => async (dispatch) => {
   const { avatar, username, email, password } = user;
-  console.log(user, 'paylaod')
+
   const formData = new FormData();
   formData.append("username", username);
   formData.append("email", email);
