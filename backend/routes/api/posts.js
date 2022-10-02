@@ -9,16 +9,6 @@ const { singleMulterUpload } = require("../../awsS3");
 
 const router = express.Router();
 
-// Does requireAuth replace this?
-// const checkPermissions = (post, currentUser) => {
-//   if (post.userId !== currentUser.id) {
-//     const err = new Error('Illegal operation.');
-//     err.status = 403;
-//     throw err;
-//   }
-// };
-
-
 const postValidators = [
   check('body')
     .exists({ checkFalsy: true })
@@ -26,13 +16,16 @@ const postValidators = [
     .isLength({ max: 100 }),
 ];
 
-
 // GET: all post
 router.get('/', asyncHandler( async(req, res, next) => {
   const post = await Post.findAll({
     include: [
       User,
-      Comment
+      Comment,
+      Like
+    ],
+    order: [
+      ['updatedAt', 'ASC']
     ]
   });
   return res.json(post)
@@ -50,15 +43,28 @@ router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
   return res.json(post)
 }))
 
-// POST: create post 
+// GET: posts of user by user id
+router.get('/user/:id(\\d+)', asyncHandler( async(req, res, next) => {
+  const userId = req.params.id
+  const posts = await Post.findAll({
+    where: {
+      userId: userId
+    },
+    order: [
+      ['updatedAt', 'DESC']
+    ]
+  })
+  return res.json(posts)
+}))
+
+// POST: create post
 router.post('/', singleMulterUpload("photo"), requireAuth, asyncHandler( async(req, res, next) => {
-  console.log('herehrehrherhehrehrherhere')
   const { body, userId } = req.body;
 
   const photo = await singlePublicFileUpload(req.file);
 
 
-  
+
   const post = await Post.create({
     userId,
     photo,
@@ -73,7 +79,7 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler( async(req, res, next) => {
   const {id} = req.body
   const post = await Post.findByPk(id)
   // console.log(req.body, '================================')
-  
+
 
   post.update(req.body)
 

@@ -36,13 +36,6 @@ export const createUser = (user) => async (dispatch) => {
   formData.append("username", username);
   formData.append("email", email);
   formData.append("password", password);
-  // console.log(formData, 'datart')
-  // for multiple files
-  // if (images && images.length !== 0) {
-  //   for (var i = 0; i < images.length; i++) {
-  //     formData.append("images", images[i]);
-  //   }
-  // }
 
   // for single file
   if (avatar) formData.append("avatar", avatar);

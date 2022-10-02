@@ -1,43 +1,114 @@
-body {
-  background-image: URL(https://www.redpoints.com/wp-content/uploads/2019/01/consumer20electronics201.png);
+.splash-page {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(250 250 250);
+  padding: 100px 0;
+  background-image: URL(https://imgs.search.brave.com/qg8_JGMvj9iEtpxtKGJCHW4klep6xUlwXyFrc89eqqA/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJhY2Nlc3Mu/Y29tL2Z1bGwvODI5/MDMyLmpwZw);
+  background-size: 100%;
+  background-position: 0px -200px;
+  background-repeat: no-repeat;
 }
 
-.splash {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+.splash-login {
+  width: 360px;
+  margin: 0 auto;
 }
 
-.splashBox {
+.form-wrapper {
+  width: 100%;
+  border: 1px solid rgb(230, 224, 224);
+  background: white;
+  padding: 32px 40px;
   display: flex;
-  justify-self: center;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  background-color: whitesmoke;
-  padding: 10px;
-  width: 66%;
-  height: 350px;
-  border: 1px solid black;
+  align-items: center;
 }
 
-#techa {
-  font-size: 74px;
+.tagline-wrapper {
+  width: 25%;
+  position: absolute;
+  top: 30%;
+  left: 50px;
 }
 
-#root {
+.tagline-wrapper span {
+  font-size: 30px;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.title-wrapper {
+  width: 180px;
+  margin: 0 auto 16px auto;
+}
+
+.login-form {
+  width: 180px;
+  margin: 0 auto 16px auto;
+}
+
+.sign-up-form {
+  margin-top: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  text-align: center;
+  font-size: 14px;
+  width: 100%;
+  background: white;
+  border: 1px solid rgb(230, 224, 224);
+  padding: 24px 0;
 }
 
-.buttonDiv {
+.login-form-input {
+  width: 100%;
+  height: 38px;
+  border-radius: 3px;
+  display: block;
+  border: 1px solid grey;
+  color: black;
+  font-size: 14px;
+  margin: 4px 0;
+  padding: 0 8px;
+}
+
+.login-btn {
+  width: 100%;
+  background-color: #0095f6;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  height: 30px;
   display: flex;
-  flex-direction: row;
-  padding: 3px;
   justify-content: center;
   align-items: center;
+  border: 0;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: grey;
+  padding: 32px 0;
+  background-color: rgb(250 250 250);
+}
+
+.footer a img {
+  width: 100%;
+  height: 20px;
+}
+
+.social-links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons{
+  margin-left: 8px;
 }

@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const { check, validationResult } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser, requireAuth} = require("../../utils/auth");
-const { User, Post, Topic, Like, Comment } = require("../../db/models");
+const { User, Post, Topic, Like, Comment, sequelize } = require("../../db/models");
 const { singlePublicFileUpload }  = require("../../awsS3");
 const { singleMulterUpload } = require("../../awsS3");
 
@@ -37,21 +37,28 @@ router.get('/', asyncHandler( async(req, res, next) => {
   return res.json(comments)
 }))
 
-// GET: comment by id
+// GET: comment by postId
 router.get('/:id(\\d+)', asyncHandler( async(req, res, next) => {
-  const commentId = req.params.id
-  const comment = await Comment.findByPk(commentId, {
+  const postId = req.params.id
+  const comment = await Comment.findAll({
+    where: {
+      postId: postId
+    },
     include: [
       User,
+    ],
+    order: [
+      ['updatedAt', 'DESC']
     ]
   })
+  console.log(comment,'w23wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww')
   return res.json(comment)
 }))
 
-// POST: create comment 
+// POST: create comment
 router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
 
-  
+
   const comment = await Comment.create(req.body)
 
   res.json(comment)

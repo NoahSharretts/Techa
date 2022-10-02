@@ -16,6 +16,8 @@ const load_one = one => ({
   payload: one
 })
 
+
+
 const add_one = one => ({
   type: ADD_ONE,
   payload: one
@@ -52,6 +54,7 @@ export const getPostById = (postId) => async dispatch => {
   }
 }
 
+
 export const createPost = payload => async dispatch => {
   const { photo, body, userId } = payload;
 
@@ -78,7 +81,7 @@ export const createPost = payload => async dispatch => {
 }
 
 export const updatePost = payload => async dispatch => {
-  
+
   const response = await csrfFetch(`/api/posts/${payload.id}`, {
     method: 'PUT',
     headers: {
@@ -114,11 +117,12 @@ const postReducer = (state = intialState, action) => {
   switch(action.type) {
     case LOAD_ALL: {
       let newState = Object.assign({}, state);
-      action.payload.forEach(post => {
-        newState[post.id] = post
+      action.payload.forEach((post, i) => {
+        newState[i] = post
       });
       return newState;
     }
+
     case ADD_ONE: {
       let newState = Object.assign({}, state);
       let newPost = action.payload;

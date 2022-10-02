@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector  } from 'react-redux';
-// import { useHistory, } from 'react-router-dom'
+
 import { createPost, getPosts } from '../../store/post'
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -8,110 +8,82 @@ import { useFormik } from 'formik';
 function CreatePostForm({ setShowForm }) {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id);
-
-
-
-  const handleCancel = (e) => {
-    e.preventDefault();
-    setShowForm(false);
-  }
+  const [imagePreview, setImagePreview] = useState(null)
 
   const formik = useFormik({
     initialValues: {
       body: "",
       photo: "",
       userId
-      
+
     },
     validationSchema: yup.object({
       body: yup.string().min(5).max(350).required('Description must be be between 5 and 350 characters'),
       photo: yup.mixed().required('Post must have an image!'),
     }),
     onSubmit: async (values) => {
-      dispatch(createPost(values)).then(() => 
+      dispatch(createPost(values)).then(() =>
       dispatch(getPosts())
       )
       setShowForm(false);
+      setImagePreview(null)
     },
   });
 
- 
-
   return (
-    <div className='postFormContainer'>
-      <h2>Share your tech off!</h2>
-      <form onSubmit={formik.handleSubmit}>
-        <div className='postForm'>
-          <div>
-            <label htmlFor='photo'>Your photo</label>
-            <input 
+    <div className='post-form-container'>
+      <div className="post-form-header">
+        <h2 className="form-header-title">Create a Post</h2>
+      </div>
+      <form className="post-form" onSubmit={formik.handleSubmit}>
+        <div>
+          {imagePreview && (
+            <img
+              style={{ maxwidth: "600px", height: "500px" }}
+              src={imagePreview}
+              alt=""
+            ></img>
+          )}
+          <div className="img-input-wrapper">
+            <label className="img-input-label" htmlFor='photo'>Select form computer</label>
+            <input
+              className="img-input"
               id='photo'
               type='file'
               name='photo'
               // value={formik.values.photo}
+              onBlur={formik.handleBlur}
               onChange={(event) => {
                 formik.setFieldValue('photo', event.currentTarget.files[0]);
-              }
-              } 
-              onBlur={formik.handleBlur}
+                setImagePreview(URL.createObjectURL(event.currentTarget.files[0]))
+              }}
             />
              {formik.touched.photo && formik.errors.photo ? (
               <div className="errorText">{formik.errors.photo}</div>
             ) : null}
           </div>
-          <div>
+          <div className="fieldDiv">
             <label htmlFor='body'>Your description here</label>
-            <textarea 
-              id='body' 
+            <textarea
+              id='body'
+              className="post-caption-input"
               name='body'
-              type='text' 
-              onChange={formik.handleChange} 
-              value={formik.values.body} 
+              type='text'
+              placeholder="Caption"
+              rows="4"
+              onChange={formik.handleChange}
+              value={formik.values.body}
               onBlur={formik.handleBlur}
             />
              {formik.touched.body && formik.errors.body ? (
-              <div className="errorText">{formik.errors.body}</div>
-            ) : null}
+               <div className="errorText">{formik.errors.body}</div>
+               ) : null}
           </div>
-            <button onClick={handleCancel} type='button'>Cancel</button>
-            <button type="submit">Done</button>
+          <button className="create-post-button" type="submit">Post</button>
         </div>
       </form>
     </div>
   )
-
-
-
-  // const [body, setBody] = useState('');
-  // const [photo, setPhoto] = useState('');
-
-
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const payload ={
-  //     photo,
-  //     body,
-  //   }
-
-  //   const post = dispatch(createPost(payload))
-    
-  //   if(post) {
-  //     setShowForm(false);
-  //     dispatch(getPosts());
-  //   }
-  // }
-
-
-  // const handleCancel = (e) => {
-  //   e.preventDefault();
-  //   setShowForm(false);
-  // }
-
-  // return (
-   
-  // )
 }
 
 export default CreatePostForm;

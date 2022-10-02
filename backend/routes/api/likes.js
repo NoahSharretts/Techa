@@ -1,20 +1,21 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { setTokenCookie, restoreUser, requireAuth} = require("../../utils/auth");
-const { User, Post, Topic, Like, Comment } = require("../../db/models");
+const {  Like } = require("../../db/models");
 
 const router = express.Router();
+
 
 router.post('/:id(\\d+)',
   requireAuth,
   asyncHandler( async(req, res) => {
     const postId = req.params.id;
-    const userId = res.locals.user.id;
+    const userId = req.user.dataValues.id;
 
     const aLike = await Like.findOne({
       where: {
-        postId,
-        userId
+        postId: postId,
+        userId: userId
       }
     });
 
