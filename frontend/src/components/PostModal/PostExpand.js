@@ -91,7 +91,7 @@ function CreatePostForm({ setShowForm, post }) {
                           <div className='buttons-wrapper'>
                           { comment.userId === user.id && (
                             <>
-                              <EditCommentModal comment={comment} />
+                              <EditCommentModal comment={comment} post={post} />
                               <svg
                                 onClick={() => handleCommentDelete(comment.id)}
                                 xmlns="http://www.w3.org/2000/svg"

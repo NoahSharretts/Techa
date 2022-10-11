@@ -3,7 +3,7 @@ import { useState } from 'react'
 import EditCommentForm from './EditCommentForm';
 import './EditCommentForm.css'
 
-function EditCommentModal({comment}) {
+function EditCommentModal({comment, post}) {
   const [showForm, setShowForm] = useState(false)
 
 
@@ -29,7 +29,7 @@ function EditCommentModal({comment}) {
         </svg>
       {showForm && (
         <Modal onClose={() => setShowForm(false)}>
-          <EditCommentForm setShowForm={setShowForm} comment={comment} />
+          <EditCommentForm setShowForm={setShowForm} comment={comment} post={post} />
         </Modal>
       )}
     </div>

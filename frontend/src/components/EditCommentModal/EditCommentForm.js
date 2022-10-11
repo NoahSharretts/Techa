@@ -1,11 +1,11 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts } from '../../store/post';
+import { getPostComments } from '../../store/comment'
 import { updateComment } from '../../store/comment';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
-function EditCommentForm({ setShowForm, comment }) {
+function EditCommentForm({ setShowForm, comment, post }) {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id)
 
@@ -21,9 +21,7 @@ function EditCommentForm({ setShowForm, comment }) {
       body: yup.string().min(5).max(350).required('Comment must be be between 5 and 350 characters'),
     }),
     onSubmit: async (values) => {
-      dispatch(updateComment(values)).then(() =>
-      dispatch(getPosts())
-      )
+      dispatch(updateComment(values)).then(() => dispatch(getPostComments(post.id)))
       setShowForm(false);
     },
   });
