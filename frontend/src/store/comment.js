@@ -86,7 +86,8 @@ export const updateComment = payload => async dispatch => {
 }
 
 export const deleteComment = (commentId) => async dispatch => {
-
+  console.log(commentId, 'commentId')
+  
   const response = await csrfFetch(`/api/comments/${commentId}`, {
     method: 'DELETE'
   })

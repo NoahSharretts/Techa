@@ -27,8 +27,9 @@ function CreatePostForm({ setShowForm, post }) {
     setShowForm(false)
   }
 
-  const handleCommentDelete = (e) => {
-    dispatch(deleteComment(e.target.value))
+  const handleCommentDelete = (commentId) => {
+    dispatch(deleteComment(commentId))
+    dispatch(getPostComments(post.id))
   }
 
   const close = () => {
@@ -92,7 +93,7 @@ function CreatePostForm({ setShowForm, post }) {
                             <>
                               <EditCommentModal comment={comment} />
                               <svg
-                                onClick={handleCommentDelete}
+                                onClick={() => handleCommentDelete(comment.id)}
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
                                 viewBox="0 0 20 20"
