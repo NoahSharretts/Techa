@@ -63,13 +63,12 @@ function CreatePostForm({ setShowForm }) {
             ) : null}
           </div>
           <div className="fieldDiv">
-            <label htmlFor='body'>Your description here</label>
             <textarea
               id='body'
               className="post-caption-input"
               name='body'
               type='text'
-              placeholder="Caption"
+              placeholder=" Your caption here..."
               rows="4"
               onChange={formik.handleChange}
               value={formik.values.body}
